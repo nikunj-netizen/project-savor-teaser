@@ -102,7 +102,7 @@ export default function SlideLegal() {
       {/* Logo */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1 }}>
         <Image
-          src="/alehar-logo.png"
+          src="/project-savor-teaser/alehar-logo.png"
           alt="Alehar Group"
           width={180}
           height={44}

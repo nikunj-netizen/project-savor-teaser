@@ -32,7 +32,7 @@ export default function SlideCover() {
         style={{ maxWidth: "750px" }}
       >
         <Image
-          src="/alehar-logo-darkbg.webp"
+          src="/project-savor-teaser/alehar-logo-darkbg.webp"
           alt="Alehar Group"
           width={180}
           height={44}

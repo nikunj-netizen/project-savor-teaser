@@ -44,7 +44,7 @@ export default function SlideClosing() {
           transition={{ duration: 1, delay: 0.2 }}
         >
           <Image
-            src="/alehar-logo-darkbg.webp"
+            src="/project-savor-teaser/alehar-logo-darkbg.webp"
             alt="Alehar Group"
             width={180}
             height={44}
