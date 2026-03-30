@@ -11,7 +11,6 @@ import {
   LabelList,
   ResponsiveContainer,
   Legend,
-  Tooltip,
 } from "recharts";
 
 const data = [
@@ -108,18 +107,6 @@ export default function RevenueGPChart() {
           axisLine={false}
           tickLine={false}
           tickFormatter={(v: number) => `${v}%`}
-        />
-        <Tooltip
-          contentStyle={{
-            background: "white",
-            border: "1px solid var(--color-warm-200)",
-            borderRadius: 6,
-            fontSize: "0.6875rem",
-          }}
-          formatter={(value: number, name: string) => {
-            if (name === "GM %") return [`${value}%`, name];
-            return [`$${value}M`, name];
-          }}
         />
         <Legend
           verticalAlign="top"
