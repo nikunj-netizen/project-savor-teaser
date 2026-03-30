@@ -33,12 +33,16 @@ const glanceFacts = [
   { label: "Addressable Market", value: "US$10.5B", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
 ];
 
-const growthLevers = [
-  { title: "Deepen Key Accounts", desc: "Upselling & bundled solutions", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
-  { title: "Expand Client Base", desc: "Hotels, restaurants, institutions", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
-  { title: "Scale Operations", desc: "Larger facility & workflows", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
-  { title: "Launch Branded Products", desc: "Private-label, higher margins", icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" },
-  { title: "Expand Infrastructure", desc: "New cold-chain hubs", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
+const channels = [
+  { label: "B2B Wholesale", pct: 90, color: "var(--color-slate)" },
+  { label: "B2C / Partnerships", pct: 6, color: "var(--color-orange)" },
+  { label: "Supermarket Butchery", pct: 4, color: "var(--color-warm-400)" },
+];
+
+const clientSegs = [
+  { label: "Top 3 Clients", pct: 30, color: "var(--color-slate)" },
+  { label: "Next 17", pct: 33, color: "var(--color-orange)" },
+  { label: "Remaining", pct: 37, color: "var(--color-warm-400)" },
 ];
 
 function SlateSectionLabel({ children }: { children: React.ReactNode }) {
@@ -54,6 +58,73 @@ function SlateSectionLabel({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
+    </div>
+  );
+}
+
+function StackedBar({ data }: { data: { label: string; pct: number; color: string }[] }) {
+  return (
+    <div>
+      <div
+        style={{
+          display: "flex",
+          height: 24,
+          borderRadius: 4,
+          overflow: "hidden",
+          marginBottom: "0.375rem",
+        }}
+      >
+        {data.map((seg) => (
+          <div
+            key={seg.label}
+            style={{
+              width: `${seg.pct}%`,
+              background: seg.color,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span
+              style={{
+                fontSize: seg.pct >= 15 ? "0.5625rem" : "0.4375rem",
+                fontWeight: 600,
+                color: "white",
+              }}
+            >
+              {seg.pct}%
+            </span>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+        {data.map((seg) => (
+          <div
+            key={seg.label}
+            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+          >
+            <div
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: 2,
+                background: seg.color,
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontSize: "0.5625rem",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                color: "var(--color-warm-600)",
+              }}
+            >
+              {seg.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -319,96 +390,26 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Growth Levers \u2014 timeline with icons */}
-      <AnimateIn delay={0.7}>
-        <SectionLabel>Growth Levers</SectionLabel>
-        <div style={{ position: "relative", marginBottom: "0.5rem" }}>
-          <div
-            style={{
-              position: "absolute",
-              top: "14px",
-              left: "10%",
-              right: "10%",
-              height: "2px",
-              background: "rgba(43, 59, 70, 0.5)",
-              zIndex: 0,
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {growthLevers.map((lever, i) => {
-              const isOrange = i % 2 === 0 || i === growthLevers.length - 1;
-              const bg = isOrange ? "var(--color-orange)" : "var(--color-slate)";
-              return (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    flex: 1,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: "50%",
-                      background: bg,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: "0.375rem",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d={lever.icon} />
-                    </svg>
-                  </div>
-                  <div
-                    style={{
-                      fontWeight: 600,
-                      fontSize: "0.5625rem",
-                      color: "var(--color-slate)",
-                      textAlign: "center",
-                      lineHeight: 1.2,
-                      marginBottom: "0.125rem",
-                    }}
-                  >
-                    {lever.title}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.5rem",
-                      color: "var(--color-warm-500)",
-                      textAlign: "center",
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {lever.desc}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </AnimateIn>
+      {/* Revenue by Channel (left) + Client Diversification (right) */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "2rem",
+          alignItems: "start",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <AnimateIn delay={0.7}>
+          <SectionLabel>Revenue by Channel</SectionLabel>
+          <StackedBar data={channels} />
+        </AnimateIn>
+
+        <AnimateIn delay={0.75}>
+          <SectionLabel>Client Diversification</SectionLabel>
+          <StackedBar data={clientSegs} />
+        </AnimateIn>
+      </div>
 
       {/* Transaction Overview */}
       <AnimateIn delay={0.8}>
