@@ -176,10 +176,11 @@ export default function SlideCore() {
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           flex: 1,
+          alignItems: "stretch",
         }}
       >
         {/* Financial Summary Table */}
-        <AnimateIn delay={0.3}>
+        <AnimateIn delay={0.3} style={{ display: "flex", flexDirection: "column" }}>
           <SectionLabel>Financial Summary</SectionLabel>
           <div
             style={{
@@ -187,6 +188,9 @@ export default function SlideCore() {
               overflow: "hidden",
               border: "1px solid var(--color-warm-200)",
               background: "white",
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             <table
@@ -194,6 +198,7 @@ export default function SlideCore() {
                 width: "100%",
                 borderCollapse: "collapse",
                 fontSize: "0.625rem",
+                flex: 1,
               }}
             >
               <thead>
