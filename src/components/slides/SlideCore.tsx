@@ -60,11 +60,11 @@ const glanceFacts = [
 ];
 
 const growthLevers = [
-  { title: "Deepen Key Accounts", desc: "Upselling & bundled solutions" },
-  { title: "Expand Client Base", desc: "Hotels, restaurants, institutions" },
-  { title: "Scale Operations", desc: "Larger facility & workflows" },
-  { title: "Launch Branded Products", desc: "Private-label, higher margins" },
-  { title: "Expand Infrastructure", desc: "New cold-chain hubs" },
+  { title: "Deepen Key Accounts", desc: "Upselling & bundled solutions", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
+  { title: "Expand Client Base", desc: "Hotels, restaurants, institutions", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
+  { title: "Scale Operations", desc: "Larger facility & workflows", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
+  { title: "Launch Branded Products", desc: "Private-label, higher margins", icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" },
+  { title: "Expand Infrastructure", desc: "New cold-chain hubs", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
 ];
 
 function SlateSectionLabel({ children }: { children: React.ReactNode }) {
@@ -205,7 +205,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* At A Glance \u2014 only section label in slate */}
+      {/* At A Glance */}
       <AnimateIn delay={0.3}>
         <SlateSectionLabel>At A Glance</SlateSectionLabel>
         <div
@@ -435,14 +435,15 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Growth Levers \u2014 orange section label */}
+      {/* Growth Levers \u2014 timeline with icons */}
       <AnimateIn delay={0.7}>
         <SectionLabel>Growth Levers</SectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
+          {/* Timeline line */}
           <div
             style={{
               position: "absolute",
-              top: "6px",
+              top: "14px",
               left: "10%",
               right: "10%",
               height: "2px",
@@ -450,6 +451,7 @@ export default function SlideCore() {
               zIndex: 0,
             }}
           />
+          {/* Nodes */}
           <div
             style={{
               display: "flex",
@@ -459,9 +461,8 @@ export default function SlideCore() {
             }}
           >
             {growthLevers.map((lever, i) => {
-              const isLast = i === growthLevers.length - 1;
-              const isOrange = i % 2 === 0 || isLast;
-              const dotColor = isOrange ? "var(--color-orange)" : "var(--color-slate)";
+              const isOrange = i % 2 === 0 || i === growthLevers.length - 1;
+              const bg = isOrange ? "var(--color-orange)" : "var(--color-slate)";
               return (
                 <div
                   key={i}
@@ -474,15 +475,30 @@ export default function SlideCore() {
                 >
                   <div
                     style={{
-                      width: 12,
-                      height: 12,
+                      width: 28,
+                      height: 28,
                       borderRadius: "50%",
-                      background: dotColor,
-                      border: `2px solid ${dotColor}`,
+                      background: bg,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       marginBottom: "0.375rem",
                       flexShrink: 0,
                     }}
-                  />
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d={lever.icon} />
+                    </svg>
+                  </div>
                   <div
                     style={{
                       fontWeight: 600,
@@ -512,7 +528,7 @@ export default function SlideCore() {
         </div>
       </AnimateIn>
 
-      {/* Transaction Overview \u2014 orange section label */}
+      {/* Transaction Overview */}
       <AnimateIn delay={0.8}>
         <SectionLabel>Transaction Overview</SectionLabel>
         <p
