@@ -76,366 +76,306 @@ export default function SlideCore() {
         color: "var(--color-slate)",
       }}
     >
-      {/* Two-column layout throughout */}
+      {/* Top: Market Context (left) + Company Snapshot (right) */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
-          marginBottom: "0.375rem",
+          marginBottom: "0.5rem",
         }}
       >
-        {/* ===== LEFT PANE ===== */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {/* Market Context */}
-          <AnimateIn delay={0.1}>
-            <SectionLabel>Market Context</SectionLabel>
-            <p
-              style={{
-                fontSize: "0.6875rem",
-                lineHeight: 1.6,
-                color: "var(--color-warm-700)",
-                margin: 0,
-                marginBottom: "0.5rem",
-                textAlign: "justify",
-              }}
-            >
-              The Philippines meat market is valued at{" "}
-              <strong>US$10.5B (2023)</strong>, projected to reach{" "}
-              <strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>.
-              Highly fragmented, with most volume flowing through wet markets
-              and small-scale distributors. Urbanization and rising incomes
-              create a consolidation opportunity for cold-chain-enabled platforms.
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                gap: "0.375rem",
-                marginBottom: "0.5rem",
-              }}
-            >
-              {[
-                { value: "5.7%", label: "GDP Growth" },
-                { value: "+20%", label: "Meat Imports YoY" },
-                { value: "10-15%", label: "Cold-Chain Growth/Yr" },
-              ].map((stat) => (
+        <AnimateIn delay={0.1}>
+          <SectionLabel>Market Context</SectionLabel>
+          <p
+            style={{
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
+              color: "var(--color-warm-700)",
+              margin: 0,
+              marginBottom: "0.5rem",
+              textAlign: "justify",
+            }}
+          >
+            The Philippines meat market is valued at{" "}
+            <strong>US$10.5B (2023)</strong>, projected to reach{" "}
+            <strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>.
+            Highly fragmented, with most volume flowing through wet markets
+            and small-scale distributors. Urbanization and rising incomes
+            create a consolidation opportunity for cold-chain-enabled platforms.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: "0.375rem",
+            }}
+          >
+            {[
+              { value: "5.7%", label: "GDP Growth" },
+              { value: "+20%", label: "Meat Imports YoY" },
+              { value: "10-15%", label: "Cold-Chain Growth/Yr" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                style={{
+                  background: "white",
+                  borderRadius: 5,
+                  padding: "0.375rem",
+                  textAlign: "center",
+                  borderLeft: "3px solid var(--color-orange)",
+                }}
+              >
                 <div
-                  key={stat.label}
                   style={{
-                    background: "white",
-                    borderRadius: 5,
-                    padding: "0.375rem",
-                    textAlign: "center",
-                    borderLeft: "3px solid var(--color-orange)",
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 700,
+                    fontSize: "0.875rem",
+                    color: "var(--color-orange)",
+                    lineHeight: 1,
                   }}
                 >
-                  <div
+                  {stat.value}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.5rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "var(--color-warm-500)",
+                    marginTop: "0.125rem",
+                  }}
+                >
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </AnimateIn>
+
+        <AnimateIn delay={0.2}>
+          <SectionLabel>Company Snapshot</SectionLabel>
+          <p
+            style={{
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
+              color: "var(--color-warm-700)",
+              margin: 0,
+              marginBottom: "0.375rem",
+              textAlign: "justify",
+            }}
+          >
+            The Target is a vertically integrated food importer, processor,
+            and distributor with <strong>11+ years</strong> of operating
+            history in the Philippines. Serves hotels, restaurants,
+            supermarkets, and institutional buyers across multiple protein
+            categories through a B2B-dominant model.
+          </p>
+          <p
+            style={{
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
+              color: "var(--color-warm-700)",
+              margin: 0,
+              textAlign: "justify",
+            }}
+          >
+            Revenue surpassed <strong>&#8369;1B in 2025</strong>, confirming
+            strong scale-up momentum. The shareholders are exploring a
+            strategic investment to accelerate the next phase of growth.
+          </p>
+        </AnimateIn>
+      </div>
+
+      {/* At A Glance \u2014 full width horizontal strip */}
+      <AnimateIn delay={0.3}>
+        <SectionLabel>At A Glance</SectionLabel>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gap: "0.375rem",
+            marginBottom: "0.5rem",
+          }}
+        >
+          {glanceFacts.map((fact) => (
+            <div
+              key={fact.label}
+              style={{
+                background: "white",
+                borderRadius: 5,
+                padding: "0.375rem 0.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.375rem",
+              }}
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-orange)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <path d={fact.icon} />
+              </svg>
+              <div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    color: "var(--color-slate)",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {fact.value}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.4375rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "var(--color-warm-500)",
+                    marginTop: "0.0625rem",
+                  }}
+                >
+                  {fact.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </AnimateIn>
+
+      {/* Financial Summary (left) + Investment Highlights (right) */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "2rem",
+          alignItems: "start",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <AnimateIn delay={0.4}>
+          <SectionLabel>Financial Summary</SectionLabel>
+          <div
+            style={{
+              borderRadius: 6,
+              overflow: "hidden",
+              border: "1px solid var(--color-warm-200)",
+              background: "white",
+            }}
+          >
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                fontSize: "0.625rem",
+              }}
+            >
+              <thead>
+                <tr style={{ background: "var(--color-warm-50)" }}>
+                  <th
                     style={{
-                      fontFamily: "var(--font-serif)",
-                      fontWeight: 700,
-                      fontSize: "0.875rem",
-                      color: "var(--color-orange)",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.5rem",
+                      textAlign: "left",
+                      padding: "0.3125rem 0.625rem",
                       fontWeight: 600,
+                      fontSize: "0.5625rem",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
                       color: "var(--color-warm-500)",
-                      marginTop: "0.125rem",
+                      borderBottom: "1px solid var(--color-warm-200)",
                     }}
                   >
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimateIn>
-
-          {/* At A Glance */}
-          <AnimateIn delay={0.25}>
-            <SectionLabel>At A Glance</SectionLabel>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
-                gap: "0.375rem",
-                marginBottom: "0.5rem",
-              }}
-            >
-              {glanceFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  style={{
-                    background: "white",
-                    borderRadius: 5,
-                    padding: "0.375rem 0.5rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.375rem",
-                  }}
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--color-orange)"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ flexShrink: 0 }}
-                  >
-                    <path d={fact.icon} />
-                  </svg>
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontWeight: 700,
-                        fontSize: "0.75rem",
-                        color: "var(--color-slate)",
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {fact.value}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "0.4375rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                        color: "var(--color-warm-500)",
-                        marginTop: "0.0625rem",
-                      }}
-                    >
-                      {fact.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimateIn>
-
-          {/* Financial Summary Table */}
-          <AnimateIn delay={0.4}>
-            <SectionLabel>Financial Summary</SectionLabel>
-            <div
-              style={{
-                borderRadius: 6,
-                overflow: "hidden",
-                border: "1px solid var(--color-warm-200)",
-                background: "white",
-                marginBottom: "0.5rem",
-              }}
-            >
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  fontSize: "0.625rem",
-                }}
-              >
-                <thead>
-                  <tr style={{ background: "var(--color-warm-50)" }}>
+                    &#8369; Thousands
+                  </th>
+                  {years.map((yr) => (
                     <th
+                      key={yr.label}
                       style={{
-                        textAlign: "left",
+                        textAlign: "right",
                         padding: "0.3125rem 0.625rem",
                         fontWeight: 600,
                         fontSize: "0.5625rem",
                         letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                        color: "var(--color-warm-500)",
+                        color: yr.label.includes("F")
+                          ? "var(--color-orange)"
+                          : "var(--color-warm-500)",
                         borderBottom: "1px solid var(--color-warm-200)",
                       }}
                     >
-                      &#8369; Thousands
+                      {yr.label}
                     </th>
-                    {years.map((yr) => (
-                      <th
-                        key={yr.label}
-                        style={{
-                          textAlign: "right",
-                          padding: "0.3125rem 0.625rem",
-                          fontWeight: 600,
-                          fontSize: "0.5625rem",
-                          letterSpacing: "0.06em",
-                          color: yr.label.includes("F")
-                            ? "var(--color-orange)"
-                            : "var(--color-warm-500)",
-                          borderBottom: "1px solid var(--color-warm-200)",
-                        }}
-                      >
-                        {yr.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {financials.map((row, i) => (
-                    <tr
-                      key={row.metric}
-                      style={{
-                        borderBottom:
-                          i < financials.length - 1
-                            ? "1px solid var(--color-warm-100)"
-                            : "none",
-                        background: row.bold
-                          ? "rgba(247,118,53,0.04)"
-                          : "transparent",
-                      }}
-                    >
-                      <td
-                        style={{
-                          padding: "0.25rem 0.625rem",
-                          fontWeight: row.bold ? 600 : 400,
-                          fontStyle: row.italic ? "italic" : "normal",
-                          color: row.bold
-                            ? "var(--color-slate)"
-                            : "var(--color-warm-600)",
-                        }}
-                      >
-                        {row.metric}
-                      </td>
-                      {years.map((yr) => (
-                        <td
-                          key={yr.key}
-                          style={{
-                            textAlign: "right",
-                            padding: "0.25rem 0.625rem",
-                            fontFamily: "var(--font-serif)",
-                            fontWeight: row.bold ? 600 : 400,
-                            fontStyle: row.italic ? "italic" : "normal",
-                            color: yr.label.includes("F")
-                              ? "var(--color-orange)"
-                              : row.bold
-                                ? "var(--color-slate)"
-                                : "var(--color-warm-600)",
-                          }}
-                        >
-                          {row[yr.key]}
-                        </td>
-                      ))}
-                    </tr>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </AnimateIn>
-
-          {/* Growth Levers */}
-          <AnimateIn delay={0.55}>
-            <SectionLabel>Growth Levers</SectionLabel>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.25rem",
-              }}
-            >
-              {growthLevers.map((lever) => (
-                <div
-                  key={lever.number}
-                  style={{
-                    background: "white",
-                    border: "1px solid var(--color-warm-200)",
-                    borderRadius: 5,
-                    padding: "0.3125rem 0.5rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                  }}
-                >
-                  <span
+                </tr>
+              </thead>
+              <tbody>
+                {financials.map((row, i) => (
+                  <tr
+                    key={row.metric}
                     style={{
-                      fontFamily: "var(--font-serif)",
-                      fontWeight: 700,
-                      fontSize: "0.75rem",
-                      color: "var(--color-orange)",
-                      flexShrink: 0,
-                      width: "1.25rem",
+                      borderBottom:
+                        i < financials.length - 1
+                          ? "1px solid var(--color-warm-100)"
+                          : "none",
+                      background: row.bold
+                        ? "rgba(247,118,53,0.04)"
+                        : "transparent",
                     }}
                   >
-                    {lever.number}
-                  </span>
-                  <div>
-                    <span
+                    <td
                       style={{
-                        fontWeight: 600,
-                        fontSize: "0.5625rem",
-                        color: "var(--color-slate)",
+                        padding: "0.25rem 0.625rem",
+                        fontWeight: row.bold ? 600 : 400,
+                        fontStyle: row.italic ? "italic" : "normal",
+                        color: row.bold
+                          ? "var(--color-slate)"
+                          : "var(--color-warm-600)",
                       }}
                     >
-                      {lever.title}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.5625rem",
-                        color: "var(--color-warm-500)",
-                        marginLeft: "0.375rem",
-                      }}
-                    >
-                      {lever.desc}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimateIn>
-        </div>
+                      {row.metric}
+                    </td>
+                    {years.map((yr) => (
+                      <td
+                        key={yr.key}
+                        style={{
+                          textAlign: "right",
+                          padding: "0.25rem 0.625rem",
+                          fontFamily: "var(--font-serif)",
+                          fontWeight: row.bold ? 600 : 400,
+                          fontStyle: row.italic ? "italic" : "normal",
+                          color: yr.label.includes("F")
+                            ? "var(--color-orange)"
+                            : row.bold
+                              ? "var(--color-slate)"
+                              : "var(--color-warm-600)",
+                        }}
+                      >
+                        {row[yr.key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </AnimateIn>
 
-        {/* ===== RIGHT PANE ===== */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {/* Company Snapshot */}
-          <AnimateIn delay={0.15}>
-            <SectionLabel>Company Snapshot</SectionLabel>
-            <p
-              style={{
-                fontSize: "0.6875rem",
-                lineHeight: 1.6,
-                color: "var(--color-warm-700)",
-                margin: 0,
-                marginBottom: "0.375rem",
-                textAlign: "justify",
-              }}
-            >
-              The Target is a vertically integrated food importer, processor,
-              and distributor with <strong>11+ years</strong> of operating
-              history in the Philippines. Serves hotels, restaurants,
-              supermarkets, and institutional buyers across multiple protein
-              categories through a B2B-dominant model.
-            </p>
-            <p
-              style={{
-                fontSize: "0.6875rem",
-                lineHeight: 1.6,
-                color: "var(--color-warm-700)",
-                margin: 0,
-                marginBottom: "0.5rem",
-                textAlign: "justify",
-              }}
-            >
-              Revenue surpassed <strong>&#8369;1B in 2025</strong>, confirming
-              strong scale-up momentum. The shareholders are exploring a
-              strategic investment to accelerate the next phase of growth.
-            </p>
-          </AnimateIn>
-
-          {/* Investment Highlights */}
-          <AnimateIn delay={0.3}>
+        <div>
+          <AnimateIn delay={0.45}>
             <SectionLabel>Investment Highlights</SectionLabel>
           </AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
-              <AnimateIn key={item.number} delay={0.35 + i * 0.08}>
+              <AnimateIn key={item.number} delay={0.5 + i * 0.08}>
                 <div
                   style={{
                     display: "flex",
@@ -478,8 +418,69 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Transaction Overview \u2014 full width */}
+      {/* Growth Levers \u2014 full width 5-column cards */}
       <AnimateIn delay={0.7}>
+        <SectionLabel>Growth Levers</SectionLabel>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: "0.5rem",
+            marginBottom: "0.5rem",
+          }}
+        >
+          {growthLevers.map((lever) => (
+            <div
+              key={lever.number}
+              style={{
+                background: "white",
+                border: "1px solid var(--color-warm-200)",
+                borderRadius: 6,
+                padding: "0.5rem 0.625rem",
+                position: "relative",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontWeight: 700,
+                  fontSize: "1.125rem",
+                  color: "var(--color-orange)",
+                  position: "absolute",
+                  top: "0.25rem",
+                  right: "0.5rem",
+                  lineHeight: 1,
+                  opacity: 0.5,
+                }}
+              >
+                {lever.number}
+              </span>
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: "0.625rem",
+                  color: "var(--color-slate)",
+                  marginBottom: "0.125rem",
+                }}
+              >
+                {lever.title}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.5625rem",
+                  lineHeight: 1.45,
+                  color: "var(--color-warm-500)",
+                }}
+              >
+                {lever.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+      </AnimateIn>
+
+      {/* Transaction Overview \u2014 full width */}
+      <AnimateIn delay={0.8}>
         <SectionLabel>Transaction Overview</SectionLabel>
         <p
           style={{
