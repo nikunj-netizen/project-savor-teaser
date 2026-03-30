@@ -243,7 +243,7 @@ export default function SlideCore() {
               textAlign: "justify",
             }}
           >
-            Revenue surpassed <strong>&#8369;1B in 2025</strong>, confirming
+            Revenue surpassed <strong>US$18M in 2025</strong>, confirming
             strong scale-up momentum. The shareholders are exploring a
             strategic investment to accelerate the next phase of growth.
           </p>
@@ -428,7 +428,7 @@ export default function SlideCore() {
             [strategic investment]
           </strong>{" "}
           to accelerate the company&#8217;s next phase of growth, with a
-          clear path to &#8369;2.5B+ in revenue and expanding EBITDA margins.
+          clear path to US$45M+ in revenue and expanding EBITDA margins.
           Proceeds will be deployed toward working capital, infrastructure,
           and scaling the distribution network. Details and projections
           available upon execution of NDA.
