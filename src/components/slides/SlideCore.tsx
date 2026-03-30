@@ -188,7 +188,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* At A Glance \u2014 full width horizontal strip */}
+      {/* At A Glance \u2014 slate cards with white content */}
       <AnimateIn delay={0.3}>
         <SectionLabel>At A Glance</SectionLabel>
         <div
@@ -203,7 +203,7 @@ export default function SlideCore() {
             <div
               key={fact.label}
               style={{
-                background: "white",
+                background: "var(--color-slate)",
                 borderRadius: 5,
                 padding: "0.375rem 0.5rem",
                 display: "flex",
@@ -216,7 +216,7 @@ export default function SlideCore() {
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--color-slate)"
+                stroke="rgba(255,255,255,0.7)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -230,7 +230,7 @@ export default function SlideCore() {
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
                     fontSize: "0.75rem",
-                    color: "var(--color-slate)",
+                    color: "white",
                     lineHeight: 1.1,
                   }}
                 >
@@ -242,7 +242,7 @@ export default function SlideCore() {
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    color: "var(--color-warm-500)",
+                    color: "rgba(255,255,255,0.55)",
                     marginTop: "0.0625rem",
                   }}
                 >
@@ -453,7 +453,6 @@ export default function SlideCore() {
                   flex: 1,
                 }}
               >
-                {/* Dot */}
                 <div
                   style={{
                     width: 12,
@@ -465,7 +464,6 @@ export default function SlideCore() {
                     flexShrink: 0,
                   }}
                 />
-                {/* Title */}
                 <div
                   style={{
                     fontWeight: 600,
@@ -478,7 +476,6 @@ export default function SlideCore() {
                 >
                   {lever.title}
                 </div>
-                {/* Description */}
                 <div
                   style={{
                     fontSize: "0.5rem",
