@@ -87,12 +87,12 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
         {data.map((seg) => (
           <div
             key={seg.label}
-            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+            style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}
           >
             <div
               style={{
-                width: 8,
-                height: 8,
+                width: 9,
+                height: 9,
                 borderRadius: 2,
                 background: seg.color,
                 flexShrink: 0,
@@ -100,10 +100,9 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
             />
             <span
               style={{
-                fontSize: "0.5625rem",
-                fontWeight: 600,
-                letterSpacing: "0.04em",
-                color: "rgba(255,255,255,0.55)",
+                fontSize: "0.6875rem",
+                fontWeight: 500,
+                color: "rgba(255,255,255,0.7)",
               }}
             >
               {seg.label}
