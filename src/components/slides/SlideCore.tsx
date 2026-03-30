@@ -439,7 +439,7 @@ export default function SlideCore() {
       <AnimateIn delay={0.7}>
         <SectionLabel>Growth Levers</SectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
-          {/* Timeline line */}
+          {/* Timeline line \u2014 50% transparent */}
           <div
             style={{
               position: "absolute",
@@ -447,7 +447,7 @@ export default function SlideCore() {
               left: "10%",
               right: "10%",
               height: "2px",
-              background: "var(--color-slate)",
+              background: "rgba(43, 59, 70, 0.5)",
               zIndex: 0,
             }}
           />
