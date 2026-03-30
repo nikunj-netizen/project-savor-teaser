@@ -3,6 +3,7 @@
 import Slide from "@/components/deck/Slide";
 import AnimateIn from "@/components/deck/AnimateIn";
 import SectionLabel from "@/components/deck/SectionLabel";
+import RevenueGPChart from "@/components/slides/RevenueGPChart";
 
 const highlights = [
   {
@@ -21,33 +22,6 @@ const highlights = [
     number: "04",
     text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk.",
   },
-];
-
-interface FinancialRow {
-  metric: string;
-  y2024: string;
-  y2025: string;
-  y2026: string;
-  y2027: string;
-  bold: boolean;
-  italic: boolean;
-}
-
-const financials: FinancialRow[] = [
-  { metric: "Net Sales", y2024: "647,702", y2025: "1,022,843", y2026: "2,512,495", y2027: "2,899,155", bold: true, italic: false },
-  { metric: "Cost of Goods Sold", y2024: "513,680", y2025: "815,433", y2026: "2,010,147", y2027: "2,319,498", bold: false, italic: false },
-  { metric: "Gross Profit", y2024: "134,022", y2025: "207,410", y2026: "502,348", y2027: "579,656", bold: true, italic: false },
-  { metric: "Gross Margin %", y2024: "20.7%", y2025: "20.3%", y2026: "20.0%", y2027: "20.0%", bold: false, italic: true },
-  { metric: "Operating Expenses", y2024: "92,236", y2025: "145,884", y2026: "326,499", y2027: "360,010", bold: false, italic: false },
-  { metric: "EBITDA", y2024: "41,786", y2025: "61,526", y2026: "175,849", y2027: "219,646", bold: true, italic: false },
-  { metric: "EBITDA %", y2024: "6.5%", y2025: "6.0%", y2026: "7.0%", y2027: "7.6%", bold: false, italic: true },
-];
-
-const years: { label: string; key: keyof FinancialRow }[] = [
-  { label: "2024A", key: "y2024" },
-  { label: "2025A", key: "y2025" },
-  { label: "2026F", key: "y2026" },
-  { label: "2027F", key: "y2027" },
 ];
 
 const glanceFacts = [
@@ -271,7 +245,7 @@ export default function SlideCore() {
         </div>
       </AnimateIn>
 
-      {/* Financial Summary (left) + Investment Highlights (right) */}
+      {/* Revenue & GP Chart (left) + Investment Highlights (right) */}
       <div
         style={{
           display: "grid",
@@ -282,107 +256,17 @@ export default function SlideCore() {
         }}
       >
         <AnimateIn delay={0.4}>
-          <SectionLabel>Financial Summary</SectionLabel>
+          <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
           <div
             style={{
-              borderRadius: 6,
-              overflow: "hidden",
-              border: "1px solid var(--color-warm-200)",
               background: "white",
+              borderRadius: 6,
+              border: "1px solid var(--color-warm-200)",
+              padding: "0.375rem",
+              height: "195px",
             }}
           >
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontSize: "0.625rem",
-              }}
-            >
-              <thead>
-                <tr style={{ background: "var(--color-warm-50)" }}>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "0.3125rem 0.625rem",
-                      fontWeight: 600,
-                      fontSize: "0.5625rem",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      color: "var(--color-warm-500)",
-                      borderBottom: "1px solid var(--color-warm-200)",
-                    }}
-                  >
-                    &#8369; Thousands
-                  </th>
-                  {years.map((yr) => (
-                    <th
-                      key={yr.label}
-                      style={{
-                        textAlign: "right",
-                        padding: "0.3125rem 0.625rem",
-                        fontWeight: 600,
-                        fontSize: "0.5625rem",
-                        letterSpacing: "0.06em",
-                        color: yr.label.includes("F")
-                          ? "var(--color-orange)"
-                          : "var(--color-warm-500)",
-                        borderBottom: "1px solid var(--color-warm-200)",
-                      }}
-                    >
-                      {yr.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {financials.map((row, i) => (
-                  <tr
-                    key={row.metric}
-                    style={{
-                      borderBottom:
-                        i < financials.length - 1
-                          ? "1px solid var(--color-warm-100)"
-                          : "none",
-                      background: row.bold
-                        ? "rgba(247,118,53,0.04)"
-                        : "transparent",
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "0.25rem 0.625rem",
-                        fontWeight: row.bold ? 600 : 400,
-                        fontStyle: row.italic ? "italic" : "normal",
-                        color: row.bold
-                          ? "var(--color-slate)"
-                          : "var(--color-warm-600)",
-                      }}
-                    >
-                      {row.metric}
-                    </td>
-                    {years.map((yr) => (
-                      <td
-                        key={yr.key}
-                        style={{
-                          textAlign: "right",
-                          padding: "0.25rem 0.625rem",
-                          fontFamily: "var(--font-serif)",
-                          fontWeight: row.bold ? 600 : 400,
-                          fontStyle: row.italic ? "italic" : "normal",
-                          color: yr.label.includes("F")
-                            ? "var(--color-orange)"
-                            : row.bold
-                              ? "var(--color-slate)"
-                              : "var(--color-warm-600)",
-                        }}
-                      >
-                        {row[yr.key]}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <RevenueGPChart />
           </div>
         </AnimateIn>
 
@@ -439,7 +323,6 @@ export default function SlideCore() {
       <AnimateIn delay={0.7}>
         <SectionLabel>Growth Levers</SectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
-          {/* Timeline line \u2014 50% transparent */}
           <div
             style={{
               position: "absolute",
@@ -451,7 +334,6 @@ export default function SlideCore() {
               zIndex: 0,
             }}
           />
-          {/* Nodes */}
           <div
             style={{
               display: "flex",
