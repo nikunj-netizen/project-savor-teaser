@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-import { execSync, spawn } from "child_process";
+import { execSync } from "child_process";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { existsSync } from "fs";
+import http from "http";
+import handler from "serve-handler";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(__dirname, "..");
@@ -20,8 +22,8 @@ async function main() {
   catch { execSync("npx playwright install chromium", { stdio: "inherit", cwd: projectRoot }); const pw = await import("playwright"); chromium = pw.chromium; }
 
   console.log("Starting server...");
-  const server = spawn("npx", ["serve", outDir, "-l", String(PORT), "--no-clipboard"], { cwd: projectRoot, stdio: "pipe" });
-  await new Promise(r => setTimeout(r, 3000));
+  const server = http.createServer((req, res) => handler(req, res, { public: outDir }));
+  await new Promise((res) => server.listen(PORT, () => { console.log(`Server on port ${PORT}`); res(undefined); }));
 
   console.log(`Generating PDF from ${URL}...`);
   try {
@@ -30,7 +32,6 @@ async function main() {
     await page.setViewportSize({ width: W, height: H });
     await page.goto(URL, { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForTimeout(2000);
-
     const count = await page.locator(".slide-wrapper").count();
     console.log(`Found ${count} slides.`);
     for (let i = 0; i < count; i++) {
@@ -39,7 +40,6 @@ async function main() {
     }
     await page.locator(".slide-wrapper").first().scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
-
     await page.evaluate((dims) => {
       const { W, H } = dims;
       const c = document.querySelector(".deck-container");
@@ -63,11 +63,10 @@ async function main() {
       s.textContent = `html,body{width:${W}px!important;height:auto!important;overflow:visible!important;margin:0!important;padding:0!important}.slide::before{background-size:64px 64px!important}`;
       document.head.appendChild(s);
     }, { W, H });
-
     await page.waitForTimeout(500);
     await page.pdf({ path: OUTPUT, width: "13.333in", height: "7.5in", printBackground: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
     console.log(`PDF saved: ${OUTPUT}`);
     await browser.close();
-  } finally { server.kill(); }
+  } finally { server.close(); }
 }
 main().catch(e => { console.error(e); process.exit(1); });
