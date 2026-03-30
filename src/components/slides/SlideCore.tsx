@@ -60,11 +60,11 @@ const glanceFacts = [
 ];
 
 const growthLevers = [
-  { number: "01", title: "Deepen Key Accounts", desc: "Grow wallet share through upselling and bundled solutions" },
-  { number: "02", title: "Expand Client Base", desc: "Acquire new hotel chains, restaurant groups, and institutions" },
-  { number: "03", title: "Scale Operations", desc: "Larger processing facility and streamlined workflows" },
-  { number: "04", title: "Launch Branded Products", desc: "Private-label meat products for higher-margin categories" },
-  { number: "05", title: "Expand Infrastructure", desc: "New cold-chain hubs for broader regional coverage" },
+  { title: "Deepen Key Accounts", desc: "Upselling & bundled solutions" },
+  { title: "Expand Client Base", desc: "Hotels, restaurants, institutions" },
+  { title: "Scale Operations", desc: "Larger facility & workflows" },
+  { title: "Launch Branded Products", desc: "Private-label, higher margins" },
+  { title: "Expand Infrastructure", desc: "New cold-chain hubs" },
 ];
 
 export default function SlideCore() {
@@ -418,64 +418,80 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Growth Levers \u2014 full width 5-column cards */}
+      {/* Growth Levers \u2014 horizontal timeline */}
       <AnimateIn delay={0.7}>
         <SectionLabel>Growth Levers</SectionLabel>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: "0.5rem",
-            marginBottom: "0.5rem",
-          }}
-        >
-          {growthLevers.map((lever) => (
-            <div
-              key={lever.number}
-              style={{
-                background: "white",
-                border: "1px solid var(--color-warm-200)",
-                borderRadius: 6,
-                padding: "0.5rem 0.625rem",
-                position: "relative",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontWeight: 700,
-                  fontSize: "1.125rem",
-                  color: "var(--color-orange)",
-                  position: "absolute",
-                  top: "0.25rem",
-                  right: "0.5rem",
-                  lineHeight: 1,
-                  opacity: 0.5,
-                }}
-              >
-                {lever.number}
-              </span>
+        <div style={{ position: "relative", marginBottom: "0.5rem" }}>
+          {/* Timeline line */}
+          <div
+            style={{
+              position: "absolute",
+              top: "6px",
+              left: "10%",
+              right: "10%",
+              height: "2px",
+              background: "var(--color-warm-300)",
+              zIndex: 0,
+            }}
+          />
+          {/* Nodes */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            {growthLevers.map((lever, i) => (
               <div
+                key={i}
                 style={{
-                  fontWeight: 600,
-                  fontSize: "0.625rem",
-                  color: "var(--color-slate)",
-                  marginBottom: "0.125rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  flex: 1,
                 }}
               >
-                {lever.title}
+                {/* Dot */}
+                <div
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: "50%",
+                    background: i === 0 ? "var(--color-orange)" : "white",
+                    border: i === 0 ? "2px solid var(--color-orange)" : "2px solid var(--color-warm-300)",
+                    marginBottom: "0.375rem",
+                    flexShrink: 0,
+                  }}
+                />
+                {/* Title */}
+                <div
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "0.5625rem",
+                    color: "var(--color-slate)",
+                    textAlign: "center",
+                    lineHeight: 1.2,
+                    marginBottom: "0.125rem",
+                  }}
+                >
+                  {lever.title}
+                </div>
+                {/* Description */}
+                <div
+                  style={{
+                    fontSize: "0.5rem",
+                    color: "var(--color-warm-500)",
+                    textAlign: "center",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {lever.desc}
+                </div>
               </div>
-              <div
-                style={{
-                  fontSize: "0.5625rem",
-                  lineHeight: 1.45,
-                  color: "var(--color-warm-500)",
-                }}
-              >
-                {lever.desc}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </AnimateIn>
 
