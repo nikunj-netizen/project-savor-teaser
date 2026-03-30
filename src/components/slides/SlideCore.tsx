@@ -356,7 +356,7 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* At A Glance — full width strip */}
+      {/* At A Glance \u2014 full width strip */}
       <AnimateIn delay={0.6}>
         <SectionLabel>At A Glance</SectionLabel>
         <div
@@ -430,6 +430,7 @@ export default function SlideCore() {
             display: "grid",
             gridTemplateColumns: "repeat(5, 1fr)",
             gap: "0.5rem",
+            marginBottom: "0.5rem",
           }}
         >
           {growthLevers.map((lever) => (
@@ -480,6 +481,30 @@ export default function SlideCore() {
             </div>
           ))}
         </div>
+      </AnimateIn>
+
+      {/* Transaction Overview */}
+      <AnimateIn delay={0.8}>
+        <SectionLabel>Transaction Overview</SectionLabel>
+        <p
+          style={{
+            fontSize: "0.6875rem",
+            lineHeight: 1.6,
+            color: "var(--color-warm-700)",
+            margin: 0,
+            textAlign: "justify",
+          }}
+        >
+          The shareholders are exploring a{" "}
+          <strong style={{ color: "var(--color-slate)" }}>
+            [strategic investment]
+          </strong>{" "}
+          to accelerate the company&#8217;s next phase of growth, with a
+          clear path to &#8369;2.5B+ in revenue and expanding EBITDA margins.
+          Proceeds will be deployed toward working capital, infrastructure,
+          and scaling the distribution network. Details and projections
+          available upon execution of NDA.
+        </p>
       </AnimateIn>
     </Slide>
   );
