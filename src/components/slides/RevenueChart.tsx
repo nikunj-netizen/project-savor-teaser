@@ -14,7 +14,11 @@ import {
 const data = [
   { year: "2023", revenue: 414, label: "\u20B1414M" },
   { year: "2024", revenue: 648, label: "\u20B1648M" },
-  { year: "2025", revenue: 1023, label: "\u20B11.02B" },
+  { year: "2025", revenue: 1023, label: "\u20B11.0B" },
+  { year: "2026F", revenue: 2512, label: "\u20B12.5B" },
+  { year: "2027F", revenue: 2899, label: "\u20B12.9B" },
+  { year: "2028F", revenue: 3267, label: "\u20B13.3B" },
+  { year: "2029F", revenue: 3595, label: "\u20B13.6B" },
 ];
 
 export default function RevenueChart() {
@@ -22,41 +26,41 @@ export default function RevenueChart() {
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         data={data}
-        margin={{ top: 20, right: 10, left: -10, bottom: 0 }}
-        barCategoryGap="30%"
+        margin={{ top: 18, right: 5, left: -15, bottom: 0 }}
+        barCategoryGap="20%"
       >
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke="var(--color-warm-200)"
+          stroke="rgba(255,255,255,0.05)"
           vertical={false}
         />
         <XAxis
           dataKey="year"
           tick={{
-            fill: "var(--color-slate)",
-            fontSize: 11,
+            fill: "rgba(255,255,255,0.7)",
+            fontSize: 9,
             fontWeight: 500,
           }}
-          axisLine={{ stroke: "var(--color-warm-300)" }}
+          axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
           tickLine={false}
         />
         <YAxis
           tick={{
-            fill: "var(--color-warm-500)",
-            fontSize: 10,
+            fill: "rgba(255,255,255,0.5)",
+            fontSize: 9,
           }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(v: number) => `${v}`}
         />
-        <Bar dataKey="revenue" radius={[4, 4, 0, 0]}>
+        <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
           {data.map((entry, index) => (
             <Cell
               key={entry.year}
               fill={
-                index === data.length - 1
+                entry.year.includes("F")
                   ? "var(--color-orange)"
-                  : "var(--color-warm-300)"
+                  : "rgba(255,255,255,0.25)"
               }
             />
           ))}
@@ -64,8 +68,8 @@ export default function RevenueChart() {
             dataKey="label"
             position="top"
             style={{
-              fill: "var(--color-slate)",
-              fontSize: 11,
+              fill: "rgba(255,255,255,0.85)",
+              fontSize: 8,
               fontWeight: 600,
               fontFamily: "var(--font-serif)",
             }}
