@@ -19,7 +19,17 @@ const highlights = [
   },
 ];
 
-const financials = [
+interface FinancialRow {
+  metric: string;
+  y2024: string;
+  y2025: string;
+  y2026: string;
+  y2027: string;
+  bold: boolean;
+  italic: boolean;
+}
+
+const financials: FinancialRow[] = [
   { metric: "Net Sales", y2024: "647,702", y2025: "1,022,843", y2026: "2,512,495", y2027: "2,899,155", bold: true, italic: false },
   { metric: "Cost of Goods Sold", y2024: "513,680", y2025: "815,433", y2026: "2,010,147", y2027: "2,319,498", bold: false, italic: false },
   { metric: "Gross Profit", y2024: "134,022", y2025: "207,410", y2026: "502,348", y2027: "579,656", bold: true, italic: false },
@@ -29,7 +39,7 @@ const financials = [
   { metric: "EBITDA %", y2024: "6.5%", y2025: "6.0%", y2026: "7.0%", y2027: "7.6%", bold: false, italic: true },
 ];
 
-const years = [
+const years: { label: string; key: keyof FinancialRow }[] = [
   { label: "2024A", key: "y2024" },
   { label: "2025A", key: "y2025" },
   { label: "2026F", key: "y2026" },
@@ -159,156 +169,170 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* Financial Summary Table */}
-      <AnimateIn delay={0.3}>
-        <SectionLabel>Financial Summary</SectionLabel>
-        <div
-          style={{
-            borderRadius: 6,
-            overflow: "hidden",
-            border: "1px solid var(--color-warm-200)",
-            background: "white",
-            marginBottom: "0.5rem",
-          }}
-        >
-          <table
+      {/* Bottom: Table left + Highlights right */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "2rem",
+          flex: 1,
+        }}
+      >
+        {/* Financial Summary Table */}
+        <AnimateIn delay={0.3}>
+          <SectionLabel>Financial Summary</SectionLabel>
+          <div
             style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              fontSize: "0.625rem",
+              borderRadius: 6,
+              overflow: "hidden",
+              border: "1px solid var(--color-warm-200)",
+              background: "white",
             }}
           >
-            <thead>
-              <tr style={{ background: "var(--color-warm-50)" }}>
-                <th
-                  style={{
-                    textAlign: "left",
-                    padding: "0.3125rem 0.625rem",
-                    fontWeight: 600,
-                    fontSize: "0.5625rem",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "var(--color-warm-500)",
-                    borderBottom: "1px solid var(--color-warm-200)",
-                  }}
-                >
-                  &#8369; Thousands
-                </th>
-                {years.map((yr) => (
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                fontSize: "0.625rem",
+              }}
+            >
+              <thead>
+                <tr style={{ background: "var(--color-warm-50)" }}>
                   <th
-                    key={yr.label}
                     style={{
-                      textAlign: "right",
+                      textAlign: "left",
                       padding: "0.3125rem 0.625rem",
                       fontWeight: 600,
                       fontSize: "0.5625rem",
                       letterSpacing: "0.06em",
-                      color: yr.label.includes("F")
-                        ? "var(--color-orange)"
-                        : "var(--color-warm-500)",
+                      textTransform: "uppercase",
+                      color: "var(--color-warm-500)",
                       borderBottom: "1px solid var(--color-warm-200)",
                     }}
                   >
-                    {yr.label}
+                    &#8369; Thousands
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {financials.map((row, i) => (
-                <tr
-                  key={row.metric}
-                  style={{
-                    borderBottom:
-                      i < financials.length - 1
-                        ? "1px solid var(--color-warm-100)"
-                        : "none",
-                    background: row.bold
-                      ? "rgba(247,118,53,0.04)"
-                      : "transparent",
-                  }}
-                >
-                  <td
-                    style={{
-                      padding: "0.25rem 0.625rem",
-                      fontWeight: row.bold ? 600 : 400,
-                      fontStyle: row.italic ? "italic" : "normal",
-                      color: row.bold
-                        ? "var(--color-slate)"
-                        : "var(--color-warm-600)",
-                    }}
-                  >
-                    {row.metric}
-                  </td>
                   {years.map((yr) => (
-                    <td
-                      key={yr.key}
+                    <th
+                      key={yr.label}
                       style={{
                         textAlign: "right",
-                        padding: "0.25rem 0.625rem",
-                        fontFamily: "var(--font-serif)",
-                        fontWeight: row.bold ? 600 : 400,
-                        fontStyle: row.italic ? "italic" : "normal",
+                        padding: "0.3125rem 0.625rem",
+                        fontWeight: 600,
+                        fontSize: "0.5625rem",
+                        letterSpacing: "0.06em",
                         color: yr.label.includes("F")
                           ? "var(--color-orange)"
-                          : row.bold
-                            ? "var(--color-slate)"
-                            : "var(--color-warm-600)",
+                          : "var(--color-warm-500)",
+                        borderBottom: "1px solid var(--color-warm-200)",
                       }}
                     >
-                      {(row as Record<string, string>)[yr.key]}
-                    </td>
+                      {yr.label}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </AnimateIn>
+              </thead>
+              <tbody>
+                {financials.map((row, i) => (
+                  <tr
+                    key={row.metric}
+                    style={{
+                      borderBottom:
+                        i < financials.length - 1
+                          ? "1px solid var(--color-warm-100)"
+                          : "none",
+                      background: row.bold
+                        ? "rgba(247,118,53,0.04)"
+                        : "transparent",
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: "0.25rem 0.625rem",
+                        fontWeight: row.bold ? 600 : 400,
+                        fontStyle: row.italic ? "italic" : "normal",
+                        color: row.bold
+                          ? "var(--color-slate)"
+                          : "var(--color-warm-600)",
+                      }}
+                    >
+                      {row.metric}
+                    </td>
+                    {years.map((yr) => (
+                      <td
+                        key={yr.key}
+                        style={{
+                          textAlign: "right",
+                          padding: "0.25rem 0.625rem",
+                          fontFamily: "var(--font-serif)",
+                          fontWeight: row.bold ? 600 : 400,
+                          fontStyle: row.italic ? "italic" : "normal",
+                          color: yr.label.includes("F")
+                            ? "var(--color-orange)"
+                            : row.bold
+                              ? "var(--color-slate)"
+                              : "var(--color-warm-600)",
+                        }}
+                      >
+                        {row[yr.key]}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </AnimateIn>
 
-      {/* Investment Highlights - horizontal */}
-      <AnimateIn delay={0.4}>
-        <SectionLabel>Investment Highlights</SectionLabel>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "0.75rem",
-          }}
-        >
-          {highlights.map((item) => (
-            <div
-              key={item.number}
-              style={{
-                display: "flex",
-                gap: "0.5rem",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontWeight: 600,
-                  fontSize: "0.75rem",
-                  color: "var(--color-orange)",
-                  flexShrink: 0,
-                }}
-              >
-                {item.number}
-              </span>
-              <p
-                style={{
-                  fontSize: "0.625rem",
-                  lineHeight: 1.5,
-                  color: "var(--color-warm-700)",
-                  margin: 0,
-                }}
-              >
-                {item.text}
-              </p>
-            </div>
-          ))}
+        {/* Investment Highlights - vertical stacked */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <AnimateIn delay={0.35}>
+            <SectionLabel>Investment Highlights</SectionLabel>
+          </AnimateIn>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+            {highlights.map((item, i) => (
+              <AnimateIn key={item.number} delay={0.4 + i * 0.08}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.75rem",
+                    paddingTop: "0.375rem",
+                    paddingBottom: "0.375rem",
+                    borderBottom:
+                      i < highlights.length - 1
+                        ? "1px solid var(--color-warm-200)"
+                        : "none",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontWeight: 600,
+                      fontSize: "0.875rem",
+                      color: "var(--color-orange)",
+                      flexShrink: 0,
+                      width: "1.5rem",
+                    }}
+                  >
+                    {item.number}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "0.6875rem",
+                      lineHeight: 1.55,
+                      color: "var(--color-warm-700)",
+                      margin: 0,
+                      textAlign: "justify",
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              </AnimateIn>
+            ))}
+          </div>
         </div>
-      </AnimateIn>
+      </div>
     </Slide>
   );
 }
