@@ -20,6 +20,10 @@ function serve(req, res) {
   if (url.startsWith(BASE)) url = url.slice(BASE.length) || "/";
   let filePath = join(outDir, url);
   try { if (statSync(filePath).isDirectory()) filePath = join(filePath, "index.html"); } catch {}
+  if (!existsSync(filePath) && !extname(filePath)) {
+    const htmlPath = filePath + ".html";
+    if (existsSync(htmlPath)) filePath = htmlPath;
+  }
   if (!existsSync(filePath)) { res.writeHead(404); res.end("Not found"); return; }
   const ext = extname(filePath);
   res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
@@ -27,14 +31,14 @@ function serve(req, res) {
 }
 
 async function generatePDF(browser, pageUrl, outputPath) {
-  console.log(`Generating PDF from ${pageUrl}...`);
+  console.log(`\nGenerating PDF from ${pageUrl}...`);
   const page = await browser.newPage();
   await page.setViewportSize({ width: W, height: H });
   await page.goto(pageUrl, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForTimeout(3000);
   const count = await page.locator(".slide-wrapper").count();
   console.log(`Found ${count} slides.`);
-  if (count === 0) { console.error("No slides found."); await page.close(); return false; }
+  if (count === 0) { console.error("No slides found!"); await page.close(); return false; }
   for (let i = 0; i < count; i++) {
     await page.locator(".slide-wrapper").nth(i).scrollIntoViewIfNeeded();
     await page.waitForTimeout(600);
@@ -83,9 +87,10 @@ async function main() {
 
   try {
     const browser = await chromium.launch();
-    await generatePDF(browser, `http://localhost:${PORT}${BASE}`, resolve(outDir, "deck.pdf"));
-    await generatePDF(browser, `http://localhost:${PORT}${BASE}/condensed`, resolve(outDir, "deck-condensed.pdf"));
+    const ok1 = await generatePDF(browser, `http://localhost:${PORT}${BASE}`, resolve(outDir, "deck.pdf"));
+    const ok2 = await generatePDF(browser, `http://localhost:${PORT}${BASE}/condensed`, resolve(outDir, "deck-condensed.pdf"));
     await browser.close();
+    if (!ok1 || !ok2) { console.error("One or more PDFs failed"); process.exit(1); }
   } finally { server.close(); }
 }
 main().catch(e => { console.error(e); process.exit(1); });
