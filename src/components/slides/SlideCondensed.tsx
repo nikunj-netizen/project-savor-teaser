@@ -51,11 +51,11 @@ export default function SlideCondensed() {
         <SectionLabel>Company Snapshot</SectionLabel>
         <p
           style={{
-            fontSize: "0.6875rem",
-            lineHeight: 1.6,
+            fontSize: "0.8125rem",
+            lineHeight: 1.65,
             color: "var(--color-warm-700)",
             margin: 0,
-            marginBottom: "0.5rem",
+            marginBottom: "0.75rem",
             textAlign: "justify",
           }}
         >
@@ -74,8 +74,8 @@ export default function SlideCondensed() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(6, 1fr)",
-            gap: "0.375rem",
-            marginBottom: "0.625rem",
+            gap: "0.5rem",
+            marginBottom: "0.875rem",
           }}
         >
           {glanceFacts.map((fact, i) => (
@@ -83,16 +83,16 @@ export default function SlideCondensed() {
               key={fact.label}
               style={{
                 background: "var(--color-slate)",
-                borderRadius: 5,
-                padding: "0.375rem 0.5rem",
+                borderRadius: 6,
+                padding: "0.5rem 0.625rem",
                 display: "flex",
                 alignItems: "center",
-                gap: "0.375rem",
+                gap: "0.4rem",
               }}
             >
               <svg
-                width="14"
-                height="14"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"}
@@ -108,7 +108,7 @@ export default function SlideCondensed() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.75rem",
+                    fontSize: "0.875rem",
                     color: "white",
                     lineHeight: 1.1,
                   }}
@@ -117,7 +117,7 @@ export default function SlideCondensed() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.4375rem",
+                    fontSize: "0.5rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -139,15 +139,15 @@ export default function SlideCondensed() {
         <div
           style={{
             display: "flex",
-            gap: "2rem",
+            gap: "2.5rem",
             alignItems: "start",
-            marginBottom: "0.625rem",
+            marginBottom: "0.875rem",
           }}
         >
           <p
             style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
+              fontSize: "0.8125rem",
+              lineHeight: 1.65,
               color: "var(--color-warm-700)",
               margin: 0,
               flex: 1,
@@ -161,7 +161,7 @@ export default function SlideCondensed() {
             and small-scale distributors. Urbanization and rising incomes
             create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "flex", gap: "0.375rem", flexShrink: 0 }}>
+          <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
             {[
               { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
               { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
@@ -171,18 +171,18 @@ export default function SlideCondensed() {
                 key={stat.label}
                 style={{
                   background: "white",
-                  borderRadius: 5,
-                  padding: "0.375rem 0.5rem",
+                  borderRadius: 6,
+                  padding: "0.5rem 0.625rem",
                   textAlign: "center",
                   borderLeft: `3px solid ${stat.accent}`,
-                  minWidth: "80px",
+                  minWidth: "90px",
                 }}
               >
                 <div
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.875rem",
+                    fontSize: "1rem",
                     color: stat.accent,
                     lineHeight: 1,
                   }}
@@ -191,12 +191,12 @@ export default function SlideCondensed() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.4375rem",
+                    fontSize: "0.5rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                     color: "var(--color-warm-500)",
-                    marginTop: "0.125rem",
+                    marginTop: "0.1875rem",
                   }}
                 >
                   {stat.label}
@@ -212,7 +212,7 @@ export default function SlideCondensed() {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
+          gap: "2.5rem",
           alignItems: "start",
           flex: 1,
         }}
@@ -224,8 +224,8 @@ export default function SlideCondensed() {
               background: "white",
               borderRadius: 6,
               border: "1px solid var(--color-warm-200)",
-              padding: "0.375rem",
-              height: "220px",
+              padding: "0.5rem",
+              height: "240px",
             }}
           >
             <RevenueGPChart />
@@ -243,8 +243,8 @@ export default function SlideCondensed() {
                   style={{
                     display: "flex",
                     gap: "0.75rem",
-                    paddingTop: "0.3125rem",
-                    paddingBottom: "0.3125rem",
+                    paddingTop: "0.4375rem",
+                    paddingBottom: "0.4375rem",
                     borderBottom:
                       i < highlights.length - 1
                         ? "1px solid var(--color-warm-200)"
@@ -255,7 +255,7 @@ export default function SlideCondensed() {
                     style={{
                       fontFamily: "var(--font-serif)",
                       fontWeight: 600,
-                      fontSize: "0.8125rem",
+                      fontSize: "0.9375rem",
                       color: "var(--color-orange)",
                       flexShrink: 0,
                       width: "1.5rem",
@@ -265,8 +265,8 @@ export default function SlideCondensed() {
                   </span>
                   <p
                     style={{
-                      fontSize: "0.625rem",
-                      lineHeight: 1.5,
+                      fontSize: "0.75rem",
+                      lineHeight: 1.55,
                       color: "var(--color-warm-700)",
                       margin: 0,
                       textAlign: "justify",
