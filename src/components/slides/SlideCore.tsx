@@ -67,7 +67,6 @@ const growthLevers = [
   { title: "Expand Infrastructure", desc: "New cold-chain hubs" },
 ];
 
-/* Section labels: primary sections orange, secondary sections slate */
 function SlateSectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -122,7 +121,6 @@ export default function SlideCore() {
             and small-scale distributors. Urbanization and rising incomes
             create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          {/* #5: Stat cards — alternating borders */}
           <div
             style={{
               display: "grid",
@@ -207,7 +205,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* #2: At A Glance \u2014 alternating slate/orange icons */}
+      {/* At A Glance */}
       <AnimateIn delay={0.3}>
         <SlateSectionLabel>At A Glance</SlateSectionLabel>
         <div
@@ -283,7 +281,6 @@ export default function SlideCore() {
           marginBottom: "0.5rem",
         }}
       >
-        {/* #3: Financial table with slate header */}
         <AnimateIn delay={0.4}>
           <SectionLabel>Financial Summary</SectionLabel>
           <div
@@ -302,7 +299,7 @@ export default function SlideCore() {
               }}
             >
               <thead>
-                <tr style={{ background: "var(--color-slate)" }}>
+                <tr style={{ background: "var(--color-warm-50)" }}>
                   <th
                     style={{
                       textAlign: "left",
@@ -311,8 +308,8 @@ export default function SlideCore() {
                       fontSize: "0.5625rem",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.7)",
-                      borderBottom: "1px solid var(--color-slate-light)",
+                      color: "var(--color-warm-500)",
+                      borderBottom: "1px solid var(--color-warm-200)",
                     }}
                   >
                     &#8369; Thousands
@@ -328,8 +325,8 @@ export default function SlideCore() {
                         letterSpacing: "0.06em",
                         color: yr.label.includes("F")
                           ? "var(--color-orange)"
-                          : "rgba(255,255,255,0.85)",
-                        borderBottom: "1px solid var(--color-slate-light)",
+                          : "var(--color-warm-500)",
+                        borderBottom: "1px solid var(--color-warm-200)",
                       }}
                     >
                       {yr.label}
@@ -438,11 +435,10 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* #1 + #4: Growth Levers \u2014 timeline with slate line, alternating dots */}
+      {/* Growth Levers \u2014 timeline */}
       <AnimateIn delay={0.7}>
         <SlateSectionLabel>Growth Levers</SlateSectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
-          {/* #4: Slate timeline line */}
           <div
             style={{
               position: "absolute",
@@ -454,7 +450,6 @@ export default function SlideCore() {
               zIndex: 0,
             }}
           />
-          {/* #1: Alternating slate/orange dots, last one orange */}
           <div
             style={{
               display: "flex",
@@ -517,7 +512,7 @@ export default function SlideCore() {
         </div>
       </AnimateIn>
 
-      {/* Transaction Overview \u2014 full width */}
+      {/* Transaction Overview */}
       <AnimateIn delay={0.8}>
         <SlateSectionLabel>Transaction Overview</SlateSectionLabel>
         <p
