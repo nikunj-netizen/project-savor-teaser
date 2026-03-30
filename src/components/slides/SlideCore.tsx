@@ -226,7 +226,6 @@ export default function SlideCore() {
               lineHeight: 1.6,
               color: "var(--color-warm-700)",
               margin: 0,
-              marginBottom: "0.375rem",
               textAlign: "justify",
             }}
           >
@@ -235,16 +234,6 @@ export default function SlideCore() {
             history in the Philippines. Serves hotels, restaurants,
             supermarkets, and institutional buyers across multiple protein
             categories through a B2B-dominant model.
-          </p>
-          <p
-            style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
-              color: "var(--color-warm-700)",
-              margin: 0,
-              textAlign: "justify",
-            }}
-          >
             Revenue surpassed <strong>US$18M in 2025</strong>, confirming
             strong scale-up momentum.
           </p>

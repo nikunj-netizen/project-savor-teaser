@@ -39,7 +39,7 @@ const legend = [
   { label: "Revenue (Forecast)", color: ORANGE },
   { label: "GP (Actual)", color: "rgba(255,255,255,0.15)" },
   { label: "GP (Forecast)", color: "rgba(247,118,53,0.4)" },
-  { label: "GM %", color: TEAL, dashed: true },
+  { label: "GM %", color: TEAL, line: true },
 ];
 
 export default function RevenueGPChartDark() {
@@ -48,8 +48,8 @@ export default function RevenueGPChartDark() {
       <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem", marginBottom: "0.125rem", flexShrink: 0 }}>
         {legend.map((it) => (
           <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
-            {it.dashed ? (
-              <svg width="12" height="8"><line x1="0" y1="4" x2="12" y2="4" stroke={it.color} strokeWidth="2" strokeDasharray="3 2" /></svg>
+            {it.line ? (
+              <svg width="12" height="8"><line x1="0" y1="4" x2="12" y2="4" stroke={it.color} strokeWidth="2" strokeOpacity="0.6" /></svg>
             ) : (
               <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
             )}
@@ -78,7 +78,7 @@ export default function RevenueGPChartDark() {
               dataKey="gm"
               stroke={TEAL}
               strokeWidth={2}
-              strokeDasharray="6 3"
+              strokeOpacity={0.6}
               dot={{ r: 4, fill: TEAL, stroke: "rgba(10,17,24,0.8)", strokeWidth: 2 }}
             >
               <LabelList dataKey="gm" content={<GmDotLabel />} />
