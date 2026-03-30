@@ -22,6 +22,10 @@ const highlights = [
     number: "04",
     text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk.",
   },
+  {
+    number: "05",
+    text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure.",
+  },
 ];
 
 const glanceFacts = [
@@ -250,7 +254,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* At A Glance */}
+      {/* At A Glance \u2014 full opacity */}
       <AnimateIn delay={0.3}>
         <SlateSectionLabel>At A Glance</SlateSectionLabel>
         <div
@@ -265,7 +269,7 @@ export default function SlideCore() {
             <div
               key={fact.label}
               style={{
-                background: "rgba(43, 59, 70, 0.7)",
+                background: "var(--color-slate)",
                 borderRadius: 5,
                 padding: "0.375rem 0.5rem",
                 display: "flex",
@@ -347,13 +351,13 @@ export default function SlideCore() {
           </AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
-              <AnimateIn key={item.number} delay={0.5 + i * 0.08}>
+              <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
                 <div
                   style={{
                     display: "flex",
                     gap: "0.75rem",
-                    paddingTop: "0.375rem",
-                    paddingBottom: "0.375rem",
+                    paddingTop: "0.3125rem",
+                    paddingBottom: "0.3125rem",
                     borderBottom:
                       i < highlights.length - 1
                         ? "1px solid var(--color-warm-200)"
@@ -364,7 +368,7 @@ export default function SlideCore() {
                     style={{
                       fontFamily: "var(--font-serif)",
                       fontWeight: 600,
-                      fontSize: "0.875rem",
+                      fontSize: "0.8125rem",
                       color: "var(--color-orange)",
                       flexShrink: 0,
                       width: "1.5rem",
@@ -374,8 +378,8 @@ export default function SlideCore() {
                   </span>
                   <p
                     style={{
-                      fontSize: "0.6875rem",
-                      lineHeight: 1.55,
+                      fontSize: "0.625rem",
+                      lineHeight: 1.5,
                       color: "var(--color-warm-700)",
                       margin: 0,
                       textAlign: "justify",
