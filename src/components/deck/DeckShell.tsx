@@ -2,8 +2,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 const SLIDE_W = 1280;
 const SLIDE_H = 720;
-interface DeckShellProps { children: React.ReactNode; totalSlides: number; }
-export default function DeckShell({ children, totalSlides }: DeckShellProps) {
+interface DeckShellProps { children: React.ReactNode; totalSlides: number; pdfPath?: string; }
+export default function DeckShell({ children, totalSlides, pdfPath = "/project-savor-teaser/deck.pdf" }: DeckShellProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [scale, setScale] = useState(1);
@@ -56,7 +56,7 @@ export default function DeckShell({ children, totalSlides }: DeckShellProps) {
         </div>
       ))}
       <div className="deck-nav">
-        <a href="/project-savor-teaser/deck.pdf" download="Project-Savor-Teaser.pdf" aria-label="Download PDF" title="Download as PDF" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.15)", background: "rgba(10,17,24,0.7)", backdropFilter: "blur(8px)", cursor: "pointer", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>
+        <a href={pdfPath} download aria-label="Download PDF" title="Download as PDF" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.15)", background: "rgba(10,17,24,0.7)", backdropFilter: "blur(8px)", cursor: "pointer", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2L7 9M7 9L4 6M7 9L10 6M2 11L12 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </a>
         <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.15)" }} />

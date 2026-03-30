@@ -6,7 +6,7 @@ import SlideLegal from "@/components/slides/SlideLegal";
 
 export default function Condensed() {
   return (
-    <DeckShell totalSlides={4}>
+    <DeckShell totalSlides={4} pdfPath="/project-savor-teaser/deck-condensed.pdf">
       <SlideCover />
       <SlideCondensed />
       <SlideClosing />
