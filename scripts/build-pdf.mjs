@@ -10,18 +10,18 @@ const projectRoot = resolve(__dirname, "..");
 const outDir = resolve(projectRoot, "out");
 const OUTPUT = resolve(outDir, "deck.pdf");
 const PORT = 4173;
-const URL = `http://localhost:${PORT}/project-savor-teaser`;
+const BASE = "/project-savor-teaser";
+const URL = `http://localhost:${PORT}${BASE}`;
 const W = 1280;
 const H = 720;
 
-const MIME = { ".html": "text/html", ".js": "application/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml", ".woff2": "font/woff2", ".woff": "font/woff", ".ico": "image/x-icon", ".pdf": "application/pdf", ".txt": "text/plain" };
+const MIME = { ".html": "text/html", ".js": "application/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml", ".woff2": "font/woff2", ".woff": "font/woff", ".ico": "image/x-icon", ".txt": "text/plain" };
 
 function serve(req, res) {
   let url = req.url.split("?")[0];
+  if (url.startsWith(BASE)) url = url.slice(BASE.length) || "/";
   let filePath = join(outDir, url);
-  try {
-    if (statSync(filePath).isDirectory()) filePath = join(filePath, "index.html");
-  } catch {}
+  try { if (statSync(filePath).isDirectory()) filePath = join(filePath, "index.html"); } catch {}
   if (!existsSync(filePath)) { res.writeHead(404); res.end("Not found"); return; }
   const ext = extname(filePath);
   res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
@@ -47,6 +47,7 @@ async function main() {
     await page.waitForTimeout(3000);
     const count = await page.locator(".slide-wrapper").count();
     console.log(`Found ${count} slides.`);
+    if (count === 0) { console.error("No slides found. Page may not have hydrated."); await browser.close(); server.close(); process.exit(1); }
     for (let i = 0; i < count; i++) {
       await page.locator(".slide-wrapper").nth(i).scrollIntoViewIfNeeded();
       await page.waitForTimeout(600);
