@@ -175,12 +175,11 @@ export default function SlideCore() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
-          flex: 1,
-          alignItems: "stretch",
+          alignItems: "start",
         }}
       >
         {/* Financial Summary Table */}
-        <AnimateIn delay={0.3} style={{ display: "flex", flexDirection: "column" }}>
+        <AnimateIn delay={0.3}>
           <SectionLabel>Financial Summary</SectionLabel>
           <div
             style={{
@@ -188,9 +187,6 @@ export default function SlideCore() {
               overflow: "hidden",
               border: "1px solid var(--color-warm-200)",
               background: "white",
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
             }}
           >
             <table
@@ -198,7 +194,6 @@ export default function SlideCore() {
                 width: "100%",
                 borderCollapse: "collapse",
                 fontSize: "0.625rem",
-                flex: 1,
               }}
             >
               <thead>
@@ -289,12 +284,12 @@ export default function SlideCore() {
           </div>
         </AnimateIn>
 
-        {/* Investment Highlights - vertical stacked */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        {/* Investment Highlights - compact, matching table height */}
+        <div>
           <AnimateIn delay={0.35}>
             <SectionLabel>Investment Highlights</SectionLabel>
           </AnimateIn>
-          <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.4 + i * 0.08}>
                 <div
