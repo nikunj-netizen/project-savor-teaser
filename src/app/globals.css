@@ -102,8 +102,8 @@
 }
 
 :root {
-  --slide-padding-x: clamp(72px, 6vw, 100px);
-  --slide-padding-y: clamp(40px, 6vh, 72px);
+  --slide-padding-x: clamp(90px, 7.5vw, 130px);
+  --slide-padding-y: clamp(52px, 7vh, 88px);
 
   --text-display: clamp(4.5rem, 9vw, 7.5rem);
   --text-hero: clamp(2.5rem, 5vw, 4.5rem);
