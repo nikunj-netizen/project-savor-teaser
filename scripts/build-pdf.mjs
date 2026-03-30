@@ -19,12 +19,17 @@ function serve(req, res) {
   let url = req.url.split("?")[0];
   if (url.startsWith(BASE)) url = url.slice(BASE.length) || "/";
   let filePath = join(outDir, url);
-  try { if (statSync(filePath).isDirectory()) filePath = join(filePath, "index.html"); } catch {}
-  if (!existsSync(filePath) && !extname(filePath)) {
-    const htmlPath = filePath + ".html";
-    if (existsSync(htmlPath)) filePath = htmlPath;
-  }
-  if (!existsSync(filePath)) { res.writeHead(404); res.end("Not found"); return; }
+  if (existsSync(filePath)) {
+    try { if (statSync(filePath).isDirectory()) {
+      const idx = join(filePath, "index.html");
+      if (existsSync(idx)) { filePath = idx; }
+      else { const hp = filePath.replace(/\/$/, "") + ".html"; if (existsSync(hp)) filePath = hp; else { res.writeHead(404); res.end("Not found"); return; } }
+    }} catch {}
+  } else if (!extname(filePath)) {
+    const hp = filePath + ".html";
+    if (existsSync(hp)) filePath = hp;
+    else { res.writeHead(404); res.end("Not found"); return; }
+  } else { res.writeHead(404); res.end("Not found"); return; }
   const ext = extname(filePath);
   res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
   res.end(readFileSync(filePath));
