@@ -13,6 +13,8 @@ import {
   Legend,
 } from "recharts";
 
+const TEAL = "#3d8b7a";
+
 const data = [
   { year: "FY23", revenue: 7.4, gp: 1.7, gm: 23.4, forecast: false },
   { year: "FY24", revenue: 11.6, gp: 2.4, gm: 20.7, forecast: false },
@@ -83,7 +85,6 @@ export default function RevenueGPChart() {
           axisLine={{ stroke: "var(--color-warm-300)" }}
           tickLine={false}
         />
-        {/* Left Y-axis: USD millions */}
         <YAxis
           yAxisId="left"
           tick={{
@@ -94,13 +95,12 @@ export default function RevenueGPChart() {
           tickLine={false}
           tickFormatter={(v: number) => `$${v}M`}
         />
-        {/* Right Y-axis: GM% */}
         <YAxis
           yAxisId="right"
           orientation="right"
           domain={[0, 30]}
           tick={{
-            fill: "var(--color-orange)",
+            fill: TEAL,
             fontSize: 9,
             fontWeight: 500,
           }}
@@ -122,7 +122,6 @@ export default function RevenueGPChart() {
             <span style={{ color: "var(--color-warm-500)", fontSize: "0.5rem" }}>{value}</span>
           )}
         />
-        {/* Revenue bars */}
         <Bar yAxisId="left" dataKey="revenue" name="Revenue" radius={[3, 3, 0, 0]}>
           {data.map((entry) => (
             <Cell
@@ -136,7 +135,6 @@ export default function RevenueGPChart() {
             content={<RevenueLabel />}
           />
         </Bar>
-        {/* Gross Profit bars */}
         <Bar yAxisId="left" dataKey="gp" name="Gross Profit" radius={[3, 3, 0, 0]}>
           {data.map((entry) => (
             <Cell
@@ -150,27 +148,15 @@ export default function RevenueGPChart() {
             content={<GPLabel />}
           />
         </Bar>
-        {/* GM% line */}
         <Line
           yAxisId="right"
           type="monotone"
           dataKey="gm"
           name="GM %"
-          stroke="var(--color-orange)"
+          stroke={TEAL}
           strokeWidth={2}
-          strokeDasharray="5 3"
-          dot={{
-            r: 3,
-            fill: "var(--color-orange)",
-            stroke: "white",
-            strokeWidth: 1.5,
-          }}
-          activeDot={{
-            r: 4,
-            fill: "var(--color-orange)",
-            stroke: "white",
-            strokeWidth: 2,
-          }}
+          strokeDasharray="6 3"
+          dot={false}
         />
       </ComposedChart>
     </ResponsiveContainer>
