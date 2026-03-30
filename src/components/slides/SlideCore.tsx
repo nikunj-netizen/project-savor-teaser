@@ -7,15 +7,15 @@ import SectionLabel from "@/components/deck/SectionLabel";
 const highlights = [
   {
     number: "01",
-    text: "Consolidation opportunity in a highly fragmented market \u2014 positioned to capture share from informal operators who lack cold-chain infrastructure, sourcing scale, and logistics reach.",
+    text: "Consolidation opportunity \u2014 positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach.",
   },
   {
     number: "02",
-    text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery, creating high barriers to replication.",
+    text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery.",
   },
   {
     number: "03",
-    text: "Capital-constrained, not demand-constrained: growth is limited by working capital, not market access. Investment directly accelerates revenue.",
+    text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth.",
   },
 ];
 
@@ -45,42 +45,40 @@ export default function SlideCore() {
         color: "var(--color-slate)",
       }}
     >
-      {/* Two-column layout */}
+      {/* Two-column top section */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "3rem",
-          marginBottom: "1rem",
+          gap: "2rem",
+          marginBottom: "0.5rem",
         }}
       >
-        {/* Left column */}
+        {/* Left: Market Context */}
         <AnimateIn delay={0.1}>
           <SectionLabel>Market Context</SectionLabel>
           <p
             style={{
-              fontSize: "0.75rem",
-              lineHeight: 1.7,
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
               color: "var(--color-warm-700)",
               margin: 0,
-              marginBottom: "0.875rem",
+              marginBottom: "0.5rem",
               textAlign: "justify",
             }}
           >
             The Philippines meat market is valued at{" "}
             <strong>US$10.5B (2023)</strong>, projected to reach{" "}
             <strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>.
-            The market is highly fragmented, with most volume flowing through
-            wet markets and small-scale distributors. Growing urbanization
-            and rising incomes create a consolidation opportunity for scaled,
-            cold-chain-enabled platforms.
+            Highly fragmented, with most volume flowing through wet markets
+            and small-scale distributors. Urbanization and rising incomes
+            create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "0.5rem",
+              gap: "0.375rem",
             }}
           >
             {[
@@ -92,8 +90,8 @@ export default function SlideCore() {
                 key={stat.label}
                 style={{
                   background: "white",
-                  borderRadius: 6,
-                  padding: "0.5rem",
+                  borderRadius: 5,
+                  padding: "0.375rem",
                   textAlign: "center",
                   borderLeft: "3px solid var(--color-orange)",
                 }}
@@ -102,7 +100,7 @@ export default function SlideCore() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.9375rem",
+                    fontSize: "0.875rem",
                     color: "var(--color-orange)",
                     lineHeight: 1,
                   }}
@@ -116,7 +114,7 @@ export default function SlideCore() {
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                     color: "var(--color-warm-500)",
-                    marginTop: "0.25rem",
+                    marginTop: "0.125rem",
                   }}
                 >
                   {stat.label}
@@ -126,38 +124,37 @@ export default function SlideCore() {
           </div>
         </AnimateIn>
 
-        {/* Right column */}
+        {/* Right: Company Snapshot */}
         <AnimateIn delay={0.2}>
           <SectionLabel>Company Snapshot</SectionLabel>
           <p
             style={{
-              fontSize: "0.75rem",
-              lineHeight: 1.7,
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
               color: "var(--color-warm-700)",
               margin: 0,
-              marginBottom: "0.875rem",
+              marginBottom: "0.375rem",
               textAlign: "justify",
             }}
           >
             The Target is a vertically integrated food importer, processor,
             and distributor with <strong>11+ years</strong> of operating
-            history in the Philippines. The company serves hotels, restaurants,
+            history in the Philippines. Serves hotels, restaurants,
             supermarkets, and institutional buyers across multiple protein
             categories through a B2B-dominant model.
           </p>
           <p
             style={{
-              fontSize: "0.75rem",
-              lineHeight: 1.7,
+              fontSize: "0.6875rem",
+              lineHeight: 1.6,
               color: "var(--color-warm-700)",
               margin: 0,
               textAlign: "justify",
             }}
           >
-            Revenue has grown at a strong trajectory, surpassing{" "}
-            <strong>&#8369;1B in 2025</strong>, confirming scale-up momentum.
-            The shareholders are exploring a strategic investment to
-            accelerate the next phase of growth.
+            Revenue surpassed <strong>&#8369;1B in 2025</strong>, confirming
+            strong scale-up momentum. The shareholders are exploring a
+            strategic investment to accelerate the next phase of growth.
           </p>
         </AnimateIn>
       </div>
@@ -167,18 +164,18 @@ export default function SlideCore() {
         <SectionLabel>Financial Summary</SectionLabel>
         <div
           style={{
-            borderRadius: 8,
+            borderRadius: 6,
             overflow: "hidden",
             border: "1px solid var(--color-warm-200)",
             background: "white",
-            marginBottom: "1rem",
+            marginBottom: "0.5rem",
           }}
         >
           <table
             style={{
               width: "100%",
               borderCollapse: "collapse",
-              fontSize: "0.6875rem",
+              fontSize: "0.625rem",
             }}
           >
             <thead>
@@ -186,9 +183,9 @@ export default function SlideCore() {
                 <th
                   style={{
                     textAlign: "left",
-                    padding: "0.5rem 0.75rem",
+                    padding: "0.3125rem 0.625rem",
                     fontWeight: 600,
-                    fontSize: "0.625rem",
+                    fontSize: "0.5625rem",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                     color: "var(--color-warm-500)",
@@ -202,9 +199,9 @@ export default function SlideCore() {
                     key={yr.label}
                     style={{
                       textAlign: "right",
-                      padding: "0.5rem 0.75rem",
+                      padding: "0.3125rem 0.625rem",
                       fontWeight: 600,
-                      fontSize: "0.625rem",
+                      fontSize: "0.5625rem",
                       letterSpacing: "0.06em",
                       color: yr.label.includes("F")
                         ? "var(--color-orange)"
@@ -233,7 +230,7 @@ export default function SlideCore() {
                 >
                   <td
                     style={{
-                      padding: "0.375rem 0.75rem",
+                      padding: "0.25rem 0.625rem",
                       fontWeight: row.bold ? 600 : 400,
                       fontStyle: row.italic ? "italic" : "normal",
                       color: row.bold
@@ -248,7 +245,7 @@ export default function SlideCore() {
                       key={yr.key}
                       style={{
                         textAlign: "right",
-                        padding: "0.375rem 0.75rem",
+                        padding: "0.25rem 0.625rem",
                         fontFamily: "var(--font-serif)",
                         fontWeight: row.bold ? 600 : 400,
                         fontStyle: row.italic ? "italic" : "normal",
@@ -269,31 +266,29 @@ export default function SlideCore() {
         </div>
       </AnimateIn>
 
-      {/* Investment Highlights */}
+      {/* Investment Highlights - horizontal */}
       <AnimateIn delay={0.4}>
         <SectionLabel>Investment Highlights</SectionLabel>
-      </AnimateIn>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gap: "1rem",
-          flex: 1,
-        }}
-      >
-        {highlights.map((item, i) => (
-          <AnimateIn key={item.number} delay={0.45 + i * 0.08}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: "0.75rem",
+          }}
+        >
+          {highlights.map((item) => (
             <div
+              key={item.number}
               style={{
                 display: "flex",
-                gap: "0.625rem",
+                gap: "0.5rem",
               }}
             >
               <span
                 style={{
                   fontFamily: "var(--font-serif)",
                   fontWeight: 600,
-                  fontSize: "0.8125rem",
+                  fontSize: "0.75rem",
                   color: "var(--color-orange)",
                   flexShrink: 0,
                 }}
@@ -302,19 +297,18 @@ export default function SlideCore() {
               </span>
               <p
                 style={{
-                  fontSize: "0.6875rem",
-                  lineHeight: 1.55,
+                  fontSize: "0.625rem",
+                  lineHeight: 1.5,
                   color: "var(--color-warm-700)",
                   margin: 0,
-                  textAlign: "justify",
                 }}
               >
                 {item.text}
               </p>
             </div>
-          </AnimateIn>
-        ))}
-      </div>
+          ))}
+        </div>
+      </AnimateIn>
     </Slide>
   );
 }
