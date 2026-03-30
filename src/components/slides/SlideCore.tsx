@@ -265,7 +265,7 @@ export default function SlideCore() {
             <div
               key={fact.label}
               style={{
-                background: "var(--color-slate)",
+                background: "rgba(43, 59, 70, 0.7)",
                 borderRadius: 5,
                 padding: "0.375rem 0.5rem",
                 display: "flex",
