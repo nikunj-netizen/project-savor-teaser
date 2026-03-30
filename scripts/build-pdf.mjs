@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import { execSync } from "child_process";
-import { resolve, dirname } from "path";
+import { resolve, dirname, extname, join } from "path";
 import { fileURLToPath } from "url";
-import { existsSync } from "fs";
+import { existsSync, readFileSync, statSync } from "fs";
 import http from "http";
-import handler from "serve-handler";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(__dirname, "..");
@@ -15,6 +14,20 @@ const URL = `http://localhost:${PORT}/project-savor-teaser`;
 const W = 1280;
 const H = 720;
 
+const MIME = { ".html": "text/html", ".js": "application/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml", ".woff2": "font/woff2", ".woff": "font/woff", ".ico": "image/x-icon", ".pdf": "application/pdf", ".txt": "text/plain" };
+
+function serve(req, res) {
+  let url = req.url.split("?")[0];
+  let filePath = join(outDir, url);
+  try {
+    if (statSync(filePath).isDirectory()) filePath = join(filePath, "index.html");
+  } catch {}
+  if (!existsSync(filePath)) { res.writeHead(404); res.end("Not found"); return; }
+  const ext = extname(filePath);
+  res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+  res.end(readFileSync(filePath));
+}
+
 async function main() {
   if (!existsSync(outDir)) { console.error("out/ not found"); process.exit(1); }
   let chromium;
@@ -22,21 +35,21 @@ async function main() {
   catch { execSync("npx playwright install chromium", { stdio: "inherit", cwd: projectRoot }); const pw = await import("playwright"); chromium = pw.chromium; }
 
   console.log("Starting server...");
-  const server = http.createServer((req, res) => handler(req, res, { public: outDir }));
-  await new Promise((res) => server.listen(PORT, () => { console.log(`Server on port ${PORT}`); res(undefined); }));
+  const server = http.createServer(serve);
+  await new Promise((r) => server.listen(PORT, () => { console.log(`Server on port ${PORT}`); r(undefined); }));
 
   console.log(`Generating PDF from ${URL}...`);
   try {
     const browser = await chromium.launch();
     const page = await browser.newPage();
     await page.setViewportSize({ width: W, height: H });
-    await page.goto(URL, { waitUntil: "networkidle", timeout: 30000 });
-    await page.waitForTimeout(2000);
+    await page.goto(URL, { waitUntil: "networkidle", timeout: 60000 });
+    await page.waitForTimeout(3000);
     const count = await page.locator(".slide-wrapper").count();
     console.log(`Found ${count} slides.`);
     for (let i = 0; i < count; i++) {
       await page.locator(".slide-wrapper").nth(i).scrollIntoViewIfNeeded();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(600);
     }
     await page.locator(".slide-wrapper").first().scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
