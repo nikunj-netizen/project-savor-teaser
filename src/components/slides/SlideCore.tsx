@@ -216,7 +216,7 @@ export default function SlideCore() {
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--color-orange)"
+                stroke="var(--color-slate)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
