@@ -69,15 +69,16 @@ body { font-family: var(--font-sans); background: var(--color-black); color: var
 
 @media print {
   @page { size: 1280px 720px; margin: 0; }
-  html, body { width: 1280px; height: auto !important; margin: 0; padding: 0; overflow: visible !important; }
-  .deck-container { height: auto !important; overflow: visible !important; scroll-snap-type: none !important; }
-  .slide-wrapper { width: 1280px !important; height: 720px !important; display: block !important; }
-  .slide-wrapper > div { transform: none !important; }
-  .slide { width: 1280px; height: 720px; max-height: 720px; overflow: hidden; page-break-after: always; break-after: page; break-inside: avoid; box-sizing: border-box; }
-  .slide:last-child { page-break-after: avoid; break-after: avoid; }
+  html, body { width: 1280px !important; height: auto !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
+  .deck-container { height: auto !important; overflow: visible !important; scroll-snap-type: none !important; display: block !important; }
+  .slide-wrapper { width: 1280px !important; height: 720px !important; display: block !important; overflow: hidden !important; page-break-after: always; break-after: page; }
+  .slide-wrapper:last-child { page-break-after: avoid; break-after: avoid; }
+  .slide-wrapper > div { transform: none !important; width: 1280px !important; height: 720px !important; }
+  .slide { width: 1280px !important; height: 720px !important; max-height: 720px !important; overflow: hidden !important; box-sizing: border-box; }
   .deck-nav, .deck-progress, .no-print { display: none !important; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   [style*="opacity: 0"] { opacity: 1 !important; }
+  [style*="transform: translate"] { transform: none !important; }
   a, a:link, a:visited, a:active, a:hover { text-decoration: none !important; border: none !important; outline: none !important; background: transparent !important; box-shadow: none !important; color: inherit !important; -webkit-text-fill-color: inherit !important; }
   .slide a[href] { color: inherit !important; -webkit-text-fill-color: inherit !important; }
   .deck-container::after { display: none !important; content: none !important; }
