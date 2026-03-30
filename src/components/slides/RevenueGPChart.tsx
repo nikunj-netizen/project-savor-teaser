@@ -8,6 +8,8 @@ import {
 const TEAL = "#3d8b7a";
 const SLATE = "#2b3b46";
 const ORANGE = "#f77635";
+const GP_SLATE = "#8a9dad";
+const GP_ORANGE = "#f7a882";
 
 const data = [
   { year: "FY23", revenue: 7.4, gp: 1.7, gm: 23.4, forecast: false },
@@ -33,7 +35,8 @@ function GpLabel(props: any) {
 const legend = [
   { label: "Revenue (Actual)", color: SLATE },
   { label: "Revenue (Forecast)", color: ORANGE },
-  { label: "Gross Profit", color: "rgba(43,59,70,0.4)" },
+  { label: "GP (Actual)", color: GP_SLATE },
+  { label: "GP (Forecast)", color: GP_ORANGE },
   { label: "GM %", color: TEAL, dashed: true },
 ];
 
@@ -64,7 +67,7 @@ export default function RevenueGPChart() {
               <LabelList dataKey="revenue" position="top" content={<RevLabel />} />
             </Bar>
             <Bar yAxisId="left" dataKey="gp" radius={[3, 3, 0, 0]}>
-              {data.map((e) => <Cell key={e.year} fill={e.forecast ? "rgba(247,118,53,0.4)" : "rgba(43,59,70,0.4)"} />)}
+              {data.map((e) => <Cell key={e.year} fill={e.forecast ? GP_ORANGE : GP_SLATE} />)}
               <LabelList dataKey="gp" position="top" content={<GpLabel />} />
             </Bar>
             <Line yAxisId="right" type="monotone" dataKey="gm" stroke={TEAL} strokeWidth={2} strokeDasharray="6 3" dot={false} />
