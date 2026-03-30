@@ -67,6 +67,24 @@ const growthLevers = [
   { title: "Expand Infrastructure", desc: "New cold-chain hubs" },
 ];
 
+/* Section labels: primary sections orange, secondary sections slate */
+function SlateSectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        fontSize: "0.8125rem",
+        fontWeight: 600,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase" as const,
+        color: "var(--color-slate)",
+        marginBottom: "0.5rem",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function SlideCore() {
   return (
     <Slide
@@ -104,6 +122,7 @@ export default function SlideCore() {
             and small-scale distributors. Urbanization and rising incomes
             create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
+          {/* #5: Stat cards — alternating borders */}
           <div
             style={{
               display: "grid",
@@ -112,9 +131,9 @@ export default function SlideCore() {
             }}
           >
             {[
-              { value: "5.7%", label: "GDP Growth" },
-              { value: "+20%", label: "Meat Imports YoY" },
-              { value: "10-15%", label: "Cold-Chain Growth/Yr" },
+              { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
+              { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
+              { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -123,7 +142,7 @@ export default function SlideCore() {
                   borderRadius: 5,
                   padding: "0.375rem",
                   textAlign: "center",
-                  borderLeft: "3px solid var(--color-orange)",
+                  borderLeft: `3px solid ${stat.accent}`,
                 }}
               >
                 <div
@@ -131,7 +150,7 @@ export default function SlideCore() {
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
                     fontSize: "0.875rem",
-                    color: "var(--color-orange)",
+                    color: stat.accent,
                     lineHeight: 1,
                   }}
                 >
@@ -188,9 +207,9 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* At A Glance \u2014 slate cards with white content */}
+      {/* #2: At A Glance \u2014 alternating slate/orange icons */}
       <AnimateIn delay={0.3}>
-        <SectionLabel>At A Glance</SectionLabel>
+        <SlateSectionLabel>At A Glance</SlateSectionLabel>
         <div
           style={{
             display: "grid",
@@ -199,7 +218,7 @@ export default function SlideCore() {
             marginBottom: "0.5rem",
           }}
         >
-          {glanceFacts.map((fact) => (
+          {glanceFacts.map((fact, i) => (
             <div
               key={fact.label}
               style={{
@@ -216,7 +235,7 @@ export default function SlideCore() {
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="rgba(255,255,255,0.7)"
+                stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -264,6 +283,7 @@ export default function SlideCore() {
           marginBottom: "0.5rem",
         }}
       >
+        {/* #3: Financial table with slate header */}
         <AnimateIn delay={0.4}>
           <SectionLabel>Financial Summary</SectionLabel>
           <div
@@ -282,7 +302,7 @@ export default function SlideCore() {
               }}
             >
               <thead>
-                <tr style={{ background: "var(--color-warm-50)" }}>
+                <tr style={{ background: "var(--color-slate)" }}>
                   <th
                     style={{
                       textAlign: "left",
@@ -291,8 +311,8 @@ export default function SlideCore() {
                       fontSize: "0.5625rem",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      color: "var(--color-warm-500)",
-                      borderBottom: "1px solid var(--color-warm-200)",
+                      color: "rgba(255,255,255,0.7)",
+                      borderBottom: "1px solid var(--color-slate-light)",
                     }}
                   >
                     &#8369; Thousands
@@ -308,8 +328,8 @@ export default function SlideCore() {
                         letterSpacing: "0.06em",
                         color: yr.label.includes("F")
                           ? "var(--color-orange)"
-                          : "var(--color-warm-500)",
-                        borderBottom: "1px solid var(--color-warm-200)",
+                          : "rgba(255,255,255,0.85)",
+                        borderBottom: "1px solid var(--color-slate-light)",
                       }}
                     >
                       {yr.label}
@@ -418,11 +438,11 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Growth Levers \u2014 horizontal timeline */}
+      {/* #1 + #4: Growth Levers \u2014 timeline with slate line, alternating dots */}
       <AnimateIn delay={0.7}>
-        <SectionLabel>Growth Levers</SectionLabel>
+        <SlateSectionLabel>Growth Levers</SlateSectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
-          {/* Timeline line */}
+          {/* #4: Slate timeline line */}
           <div
             style={{
               position: "absolute",
@@ -430,11 +450,11 @@ export default function SlideCore() {
               left: "10%",
               right: "10%",
               height: "2px",
-              background: "var(--color-warm-300)",
+              background: "var(--color-slate)",
               zIndex: 0,
             }}
           />
-          {/* Nodes */}
+          {/* #1: Alternating slate/orange dots, last one orange */}
           <div
             style={{
               display: "flex",
@@ -443,58 +463,63 @@ export default function SlideCore() {
               zIndex: 1,
             }}
           >
-            {growthLevers.map((lever, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  flex: 1,
-                }}
-              >
+            {growthLevers.map((lever, i) => {
+              const isLast = i === growthLevers.length - 1;
+              const isOrange = i % 2 === 0 || isLast;
+              const dotColor = isOrange ? "var(--color-orange)" : "var(--color-slate)";
+              return (
                 <div
+                  key={i}
                   style={{
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                    background: i === 0 ? "var(--color-orange)" : "white",
-                    border: i === 0 ? "2px solid var(--color-orange)" : "2px solid var(--color-warm-300)",
-                    marginBottom: "0.375rem",
-                    flexShrink: 0,
-                  }}
-                />
-                <div
-                  style={{
-                    fontWeight: 600,
-                    fontSize: "0.5625rem",
-                    color: "var(--color-slate)",
-                    textAlign: "center",
-                    lineHeight: 1.2,
-                    marginBottom: "0.125rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    flex: 1,
                   }}
                 >
-                  {lever.title}
+                  <div
+                    style={{
+                      width: 12,
+                      height: 12,
+                      borderRadius: "50%",
+                      background: dotColor,
+                      border: `2px solid ${dotColor}`,
+                      marginBottom: "0.375rem",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontWeight: 600,
+                      fontSize: "0.5625rem",
+                      color: "var(--color-slate)",
+                      textAlign: "center",
+                      lineHeight: 1.2,
+                      marginBottom: "0.125rem",
+                    }}
+                  >
+                    {lever.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.5rem",
+                      color: "var(--color-warm-500)",
+                      textAlign: "center",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {lever.desc}
+                  </div>
                 </div>
-                <div
-                  style={{
-                    fontSize: "0.5rem",
-                    color: "var(--color-warm-500)",
-                    textAlign: "center",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {lever.desc}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </AnimateIn>
 
       {/* Transaction Overview \u2014 full width */}
       <AnimateIn delay={0.8}>
-        <SectionLabel>Transaction Overview</SectionLabel>
+        <SlateSectionLabel>Transaction Overview</SlateSectionLabel>
         <p
           style={{
             fontSize: "0.6875rem",
