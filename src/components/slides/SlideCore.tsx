@@ -52,12 +52,12 @@ function SlateSectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontSize: "0.8125rem",
+        fontSize: "0.75rem",
         fontWeight: 600,
         letterSpacing: "0.14em",
         textTransform: "uppercase" as const,
         color: "var(--color-slate)",
-        marginBottom: "0.5rem",
+        marginBottom: "0.375rem",
       }}
     >
       {children}
@@ -71,10 +71,10 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
       <div
         style={{
           display: "flex",
-          height: 24,
+          height: 20,
           borderRadius: 4,
           overflow: "hidden",
-          marginBottom: "0.375rem",
+          marginBottom: "0.25rem",
         }}
       >
         {data.map((seg) => (
@@ -90,7 +90,7 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
           >
             <span
               style={{
-                fontSize: seg.pct >= 15 ? "0.5625rem" : "0.4375rem",
+                fontSize: seg.pct >= 15 ? "0.5rem" : "0.4375rem",
                 fontWeight: 600,
                 color: "white",
               }}
@@ -100,16 +100,16 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap" }}>
         {data.map((seg) => (
           <div
             key={seg.label}
-            style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}
+            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
           >
             <div
               style={{
-                width: 9,
-                height: 9,
+                width: 8,
+                height: 8,
                 borderRadius: 2,
                 background: seg.color,
                 flexShrink: 0,
@@ -117,7 +117,7 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
             />
             <span
               style={{
-                fontSize: "0.6875rem",
+                fontSize: "0.625rem",
                 fontWeight: 500,
                 color: "var(--color-warm-700)",
               }}
@@ -146,18 +146,18 @@ export default function SlideCore() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
-          marginBottom: "0.5rem",
+          marginBottom: "0.375rem",
         }}
       >
         <AnimateIn delay={0.1}>
           <SectionLabel>Market Context</SectionLabel>
           <p
             style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
+              fontSize: "0.625rem",
+              lineHeight: 1.55,
               color: "var(--color-warm-700)",
               margin: 0,
-              marginBottom: "0.5rem",
+              marginBottom: "0.375rem",
               textAlign: "justify",
             }}
           >
@@ -172,7 +172,7 @@ export default function SlideCore() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "0.375rem",
+              gap: "0.3rem",
             }}
           >
             {[
@@ -185,7 +185,7 @@ export default function SlideCore() {
                 style={{
                   background: "white",
                   borderRadius: 5,
-                  padding: "0.375rem",
+                  padding: "0.3rem",
                   textAlign: "center",
                   borderLeft: `3px solid ${stat.accent}`,
                 }}
@@ -194,7 +194,7 @@ export default function SlideCore() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.875rem",
+                    fontSize: "0.8125rem",
                     color: stat.accent,
                     lineHeight: 1,
                   }}
@@ -203,7 +203,7 @@ export default function SlideCore() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.5rem",
+                    fontSize: "0.4375rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -222,8 +222,8 @@ export default function SlideCore() {
           <SectionLabel>Company Snapshot</SectionLabel>
           <p
             style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
+              fontSize: "0.625rem",
+              lineHeight: 1.55,
               color: "var(--color-warm-700)",
               margin: 0,
               textAlign: "justify",
@@ -247,8 +247,8 @@ export default function SlideCore() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(5, 1fr)",
-            gap: "0.375rem",
-            marginBottom: "0.5rem",
+            gap: "0.3rem",
+            marginBottom: "0.375rem",
           }}
         >
           {glanceFacts.map((fact, i) => (
@@ -257,15 +257,15 @@ export default function SlideCore() {
               style={{
                 background: "var(--color-slate)",
                 borderRadius: 5,
-                padding: "0.375rem 0.5rem",
+                padding: "0.3rem 0.4rem",
                 display: "flex",
                 alignItems: "center",
-                gap: "0.375rem",
+                gap: "0.3rem",
               }}
             >
               <svg
-                width="14"
-                height="14"
+                width="13"
+                height="13"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"}
@@ -281,7 +281,7 @@ export default function SlideCore() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.75rem",
+                    fontSize: "0.6875rem",
                     color: "white",
                     lineHeight: 1.1,
                   }}
@@ -290,7 +290,7 @@ export default function SlideCore() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.4375rem",
+                    fontSize: "0.375rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -313,7 +313,7 @@ export default function SlideCore() {
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           alignItems: "start",
-          marginBottom: "0.5rem",
+          marginBottom: "0.375rem",
         }}
       >
         <AnimateIn delay={0.4}>
@@ -323,8 +323,8 @@ export default function SlideCore() {
               background: "white",
               borderRadius: 6,
               border: "1px solid var(--color-warm-200)",
-              padding: "0.375rem",
-              height: "195px",
+              padding: "0.25rem",
+              height: "170px",
             }}
           >
             <RevenueGPChart />
@@ -341,9 +341,9 @@ export default function SlideCore() {
                 <div
                   style={{
                     display: "flex",
-                    gap: "0.75rem",
-                    paddingTop: "0.3125rem",
-                    paddingBottom: "0.3125rem",
+                    gap: "0.625rem",
+                    paddingTop: "0.25rem",
+                    paddingBottom: "0.25rem",
                     borderBottom:
                       i < highlights.length - 1
                         ? "1px solid var(--color-warm-200)"
@@ -354,18 +354,18 @@ export default function SlideCore() {
                     style={{
                       fontFamily: "var(--font-serif)",
                       fontWeight: 600,
-                      fontSize: "0.8125rem",
+                      fontSize: "0.75rem",
                       color: "var(--color-orange)",
                       flexShrink: 0,
-                      width: "1.5rem",
+                      width: "1.25rem",
                     }}
                   >
                     {item.number}
                   </span>
                   <p
                     style={{
-                      fontSize: "0.625rem",
-                      lineHeight: 1.5,
+                      fontSize: "0.5625rem",
+                      lineHeight: 1.45,
                       color: "var(--color-warm-700)",
                       margin: 0,
                       textAlign: "justify",
@@ -387,7 +387,7 @@ export default function SlideCore() {
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           alignItems: "start",
-          marginBottom: "0.5rem",
+          marginBottom: "0.25rem",
         }}
       >
         <AnimateIn delay={0.7}>
@@ -406,8 +406,8 @@ export default function SlideCore() {
         <SectionLabel>Transaction Overview</SectionLabel>
         <p
           style={{
-            fontSize: "0.6875rem",
-            lineHeight: 1.6,
+            fontSize: "0.5625rem",
+            lineHeight: 1.5,
             color: "var(--color-warm-700)",
             margin: 0,
             textAlign: "justify",
