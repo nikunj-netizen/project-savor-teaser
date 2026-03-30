@@ -8,7 +8,7 @@ import RevenueGPChartDark from "@/components/slides/RevenueGPChartDark";
 const highlights = [
   {
     number: "01",
-    text: "Consolidation opportunity \u2014 positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach.",
+    text: "Consolidation opportunity: positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach.",
   },
   {
     number: "02",
@@ -32,7 +32,6 @@ const glanceFacts = [
   { label: "Operating History", value: "11+ Years", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
   { label: "Leadership", value: "5 Co-Founders", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
   { label: "Headquarters", value: "Philippines", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" },
-  { label: "Core Channels", value: "B2B / Retail / B2C", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
   { label: "Products", value: "Meat, Poultry, Seafood", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
   { label: "Addressable Market", value: "US$10.5B", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
 ];
@@ -220,7 +219,7 @@ export default function SlideDark() {
               textAlign: "justify",
             }}
           >
-            The Target is a vertically integrated food importer, processor,
+            A vertically integrated food importer, processor,
             and distributor with <strong style={{ color: "rgba(255,255,255,0.95)" }}>11+ years</strong> of operating
             history in the Philippines. Serves hotels, restaurants,
             supermarkets, and institutional buyers across multiple protein
@@ -236,19 +235,18 @@ export default function SlideDark() {
             }}
           >
             Revenue surpassed <strong style={{ color: "var(--color-orange)" }}>US$18M in 2025</strong>, confirming
-            strong scale-up momentum. The shareholders are exploring a
-            strategic investment to accelerate the next phase of growth.
+            strong scale-up momentum.
           </p>
         </AnimateIn>
       </div>
 
-      {/* At A Glance */}
+      {/* At A Glance: 5 cards */}
       <AnimateIn delay={0.3}>
         <SectionLabel>At A Glance</SectionLabel>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)",
+            gridTemplateColumns: "repeat(5, 1fr)",
             gap: "0.375rem",
             marginBottom: "0.5rem",
           }}
