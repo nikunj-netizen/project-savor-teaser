@@ -54,10 +54,10 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
       <div
         style={{
           display: "flex",
-          height: 24,
+          height: 23,
           borderRadius: 4,
           overflow: "hidden",
-          marginBottom: "0.375rem",
+          marginBottom: "0.34rem",
         }}
       >
         {data.map((seg) => (
@@ -73,7 +73,7 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
           >
             <span
               style={{
-                fontSize: seg.pct >= 15 ? "0.5625rem" : "0.4375rem",
+                fontSize: seg.pct >= 15 ? "0.54rem" : "0.4375rem",
                 fontWeight: 600,
                 color: "white",
               }}
@@ -83,7 +83,7 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "0.73rem", flexWrap: "wrap" }}>
         {data.map((seg) => (
           <div
             key={seg.label}
@@ -100,7 +100,7 @@ function DarkStackedBar({ data }: { data: { label: string; pct: number; color: s
             />
             <span
               style={{
-                fontSize: "0.6875rem",
+                fontSize: "0.67rem",
                 fontWeight: 500,
                 color: "rgba(255,255,255,0.7)",
               }}
@@ -134,18 +134,18 @@ export default function SlideDark() {
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
-          marginBottom: "0.5rem",
+          marginBottom: "0.4625rem",
         }}
       >
         <AnimateIn delay={0.1}>
           <SectionLabel>Market Context</SectionLabel>
           <p
             style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
+              fontSize: "0.67rem",
+              lineHeight: 1.585,
               color: "rgba(255,255,255,0.75)",
               margin: 0,
-              marginBottom: "0.5rem",
+              marginBottom: "0.4625rem",
               textAlign: "justify",
             }}
           >
@@ -160,7 +160,7 @@ export default function SlideDark() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "0.375rem",
+              gap: "0.35rem",
             }}
           >
             {[
@@ -173,7 +173,7 @@ export default function SlideDark() {
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   borderRadius: 5,
-                  padding: "0.375rem",
+                  padding: "0.35rem",
                   textAlign: "center",
                   borderLeft: `3px solid ${stat.accent}`,
                 }}
@@ -182,7 +182,7 @@ export default function SlideDark() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.875rem",
+                    fontSize: "0.86rem",
                     color: stat.accent,
                     lineHeight: 1,
                   }}
@@ -191,7 +191,7 @@ export default function SlideDark() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.5rem",
+                    fontSize: "0.49rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -210,11 +210,10 @@ export default function SlideDark() {
           <SectionLabel>Company Snapshot</SectionLabel>
           <p
             style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
+              fontSize: "0.67rem",
+              lineHeight: 1.585,
               color: "rgba(255,255,255,0.75)",
               margin: 0,
-              marginBottom: "0.375rem",
               textAlign: "justify",
             }}
           >
@@ -223,16 +222,6 @@ export default function SlideDark() {
             history in the Philippines. Serves hotels, restaurants,
             supermarkets, and institutional buyers across multiple protein
             categories through a B2B-dominant model.
-          </p>
-          <p
-            style={{
-              fontSize: "0.6875rem",
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.75)",
-              margin: 0,
-              textAlign: "justify",
-            }}
-          >
             Revenue surpassed <strong style={{ color: "var(--color-orange)" }}>US$18M in 2025</strong>, confirming
             strong scale-up momentum.
           </p>
@@ -246,8 +235,8 @@ export default function SlideDark() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(5, 1fr)",
-            gap: "0.375rem",
-            marginBottom: "0.5rem",
+            gap: "0.35rem",
+            marginBottom: "0.4625rem",
           }}
         >
           {glanceFacts.map((fact, i) => (
@@ -257,10 +246,10 @@ export default function SlideDark() {
                 background: "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.1)",
                 borderRadius: 5,
-                padding: "0.375rem 0.5rem",
+                padding: "0.35rem 0.47rem",
                 display: "flex",
                 alignItems: "center",
-                gap: "0.375rem",
+                gap: "0.35rem",
               }}
             >
               <svg
@@ -281,7 +270,7 @@ export default function SlideDark() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.75rem",
+                    fontSize: "0.74rem",
                     color: "rgba(255,255,255,0.95)",
                     lineHeight: 1.1,
                   }}
@@ -290,7 +279,7 @@ export default function SlideDark() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.4375rem",
+                    fontSize: "0.42rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -313,7 +302,7 @@ export default function SlideDark() {
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           alignItems: "start",
-          marginBottom: "0.5rem",
+          marginBottom: "0.4625rem",
         }}
       >
         <AnimateIn delay={0.4}>
@@ -323,8 +312,8 @@ export default function SlideDark() {
               background: "rgba(255,255,255,0.04)",
               borderRadius: 6,
               border: "1px solid rgba(255,255,255,0.08)",
-              padding: "0.375rem",
-              height: "195px",
+              padding: "0.35rem",
+              height: "187px",
             }}
           >
             <RevenueGPChartDark />
@@ -341,9 +330,9 @@ export default function SlideDark() {
                 <div
                   style={{
                     display: "flex",
-                    gap: "0.75rem",
-                    paddingTop: "0.3125rem",
-                    paddingBottom: "0.3125rem",
+                    gap: "0.72rem",
+                    paddingTop: "0.29rem",
+                    paddingBottom: "0.29rem",
                     borderBottom:
                       i < highlights.length - 1
                         ? "1px solid rgba(255,255,255,0.08)"
@@ -354,18 +343,18 @@ export default function SlideDark() {
                     style={{
                       fontFamily: "var(--font-serif)",
                       fontWeight: 600,
-                      fontSize: "0.8125rem",
+                      fontSize: "0.79rem",
                       color: "var(--color-orange)",
                       flexShrink: 0,
-                      width: "1.5rem",
+                      width: "1.46rem",
                     }}
                   >
                     {item.number}
                   </span>
                   <p
                     style={{
-                      fontSize: "0.625rem",
-                      lineHeight: 1.5,
+                      fontSize: "0.6rem",
+                      lineHeight: 1.485,
                       color: "rgba(255,255,255,0.7)",
                       margin: 0,
                       textAlign: "justify",
@@ -387,7 +376,7 @@ export default function SlideDark() {
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           alignItems: "start",
-          marginBottom: "0.5rem",
+          marginBottom: "0.4625rem",
         }}
       >
         <AnimateIn delay={0.7}>
@@ -406,8 +395,8 @@ export default function SlideDark() {
         <SectionLabel>Transaction Overview</SectionLabel>
         <p
           style={{
-            fontSize: "0.6875rem",
-            lineHeight: 1.6,
+            fontSize: "0.65rem",
+            lineHeight: 1.57,
             color: "rgba(255,255,255,0.75)",
             margin: 0,
             textAlign: "justify",
