@@ -205,7 +205,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* At A Glance */}
+      {/* At A Glance \u2014 only section label in slate */}
       <AnimateIn delay={0.3}>
         <SlateSectionLabel>At A Glance</SlateSectionLabel>
         <div
@@ -435,9 +435,9 @@ export default function SlideCore() {
         </div>
       </div>
 
-      {/* Growth Levers \u2014 timeline */}
+      {/* Growth Levers \u2014 orange section label */}
       <AnimateIn delay={0.7}>
-        <SlateSectionLabel>Growth Levers</SlateSectionLabel>
+        <SectionLabel>Growth Levers</SectionLabel>
         <div style={{ position: "relative", marginBottom: "0.5rem" }}>
           <div
             style={{
@@ -512,9 +512,9 @@ export default function SlideCore() {
         </div>
       </AnimateIn>
 
-      {/* Transaction Overview */}
+      {/* Transaction Overview \u2014 orange section label */}
       <AnimateIn delay={0.8}>
-        <SlateSectionLabel>Transaction Overview</SlateSectionLabel>
+        <SectionLabel>Transaction Overview</SectionLabel>
         <p
           style={{
             fontSize: "0.6875rem",
