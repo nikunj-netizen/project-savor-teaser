@@ -50,6 +50,15 @@ const years: { label: string; key: keyof FinancialRow }[] = [
   { label: "2027F", key: "y2027" },
 ];
 
+const glanceFacts = [
+  { label: "Operating History", value: "11+ Years", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+  { label: "Leadership", value: "5 Co-Founders", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+  { label: "Headquarters", value: "Philippines", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" },
+  { label: "Core Channels", value: "B2B / Retail / B2C", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
+  { label: "Products", value: "Meat, Poultry, Seafood", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
+  { label: "Addressable Market", value: "US$10.5B", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+];
+
 export default function SlideCore() {
   return (
     <Slide
@@ -173,13 +182,14 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
 
-      {/* Bottom: Table left + Highlights right */}
+      {/* Middle: Table left + Highlights right */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "2rem",
           alignItems: "start",
+          marginBottom: "0.5rem",
         }}
       >
         {/* Financial Summary Table */}
@@ -337,6 +347,71 @@ export default function SlideCore() {
           </div>
         </div>
       </div>
+
+      {/* At A Glance — full width strip */}
+      <AnimateIn delay={0.6}>
+        <SectionLabel>At A Glance</SectionLabel>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(6, 1fr)",
+            gap: "0.375rem",
+          }}
+        >
+          {glanceFacts.map((fact) => (
+            <div
+              key={fact.label}
+              style={{
+                background: "white",
+                borderRadius: 5,
+                padding: "0.375rem 0.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.375rem",
+              }}
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-orange)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <path d={fact.icon} />
+              </svg>
+              <div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    color: "var(--color-slate)",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {fact.value}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.4375rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "var(--color-warm-500)",
+                    marginTop: "0.0625rem",
+                  }}
+                >
+                  {fact.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </AnimateIn>
     </Slide>
   );
 }
