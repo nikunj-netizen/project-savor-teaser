@@ -12,9 +12,9 @@ import {
 } from "recharts";
 
 const data = [
-  { year: "2023", revenue: 414, label: "₱414M" },
-  { year: "2024", revenue: 648, label: "₱648M" },
-  { year: "2025", revenue: 1023, label: "₱1.02B" },
+  { year: "2023", revenue: 414, label: "\u20B1414M" },
+  { year: "2024", revenue: 648, label: "\u20B1648M" },
+  { year: "2025", revenue: 1023, label: "\u20B11.02B" },
 ];
 
 export default function RevenueChart() {
@@ -27,22 +27,22 @@ export default function RevenueChart() {
       >
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke="rgba(255,255,255,0.05)"
+          stroke="var(--color-warm-200)"
           vertical={false}
         />
         <XAxis
           dataKey="year"
           tick={{
-            fill: "rgba(255,255,255,0.85)",
+            fill: "var(--color-slate)",
             fontSize: 11,
             fontWeight: 500,
           }}
-          axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+          axisLine={{ stroke: "var(--color-warm-300)" }}
           tickLine={false}
         />
         <YAxis
           tick={{
-            fill: "rgba(255,255,255,0.7)",
+            fill: "var(--color-warm-500)",
             fontSize: 10,
           }}
           axisLine={false}
@@ -56,7 +56,7 @@ export default function RevenueChart() {
               fill={
                 index === data.length - 1
                   ? "var(--color-orange)"
-                  : "rgba(255,255,255,0.25)"
+                  : "var(--color-warm-300)"
               }
             />
           ))}
@@ -64,7 +64,7 @@ export default function RevenueChart() {
             dataKey="label"
             position="top"
             style={{
-              fill: "rgba(255,255,255,0.9)",
+              fill: "var(--color-slate)",
               fontSize: 11,
               fontWeight: 600,
               fontFamily: "var(--font-serif)",
