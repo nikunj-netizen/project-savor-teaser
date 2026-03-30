@@ -1,8 +1,9 @@
 "use client";
 
 import {
-  BarChart,
+  ComposedChart,
   Bar,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -10,45 +11,45 @@ import {
   LabelList,
   ResponsiveContainer,
   Legend,
+  Tooltip,
 } from "recharts";
 
-// PHP to USD at ~56 PHP/USD
 const data = [
-  { year: "FY23", revenue: 7.4, gp: 1.7, gm: "23.4%", forecast: false },
-  { year: "FY24", revenue: 11.6, gp: 2.4, gm: "20.7%", forecast: false },
-  { year: "FY25", revenue: 18.3, gp: 3.7, gm: "20.3%", forecast: false },
-  { year: "FY26F", revenue: 44.9, gp: 9.0, gm: "20.0%", forecast: true },
-  { year: "FY27F", revenue: 51.8, gp: 10.4, gm: "20.0%", forecast: true },
+  { year: "FY23", revenue: 7.4, gp: 1.7, gm: 23.4, forecast: false },
+  { year: "FY24", revenue: 11.6, gp: 2.4, gm: 20.7, forecast: false },
+  { year: "FY25", revenue: 18.3, gp: 3.7, gm: 20.3, forecast: false },
+  { year: "FY26F", revenue: 44.9, gp: 9.0, gm: 20.0, forecast: true },
+  { year: "FY27F", revenue: 51.8, gp: 10.4, gm: 20.0, forecast: true },
 ];
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-function GMLabel(props: any) {
-  const { x, y, width, value } = props;
-  if (!value) return null;
-  return (
-    <text
-      x={x + width / 2}
-      y={y - 6}
-      fill="var(--color-orange)"
-      fontSize={9}
-      fontWeight={600}
-      fontStyle="italic"
-      textAnchor="middle"
-    >
-      {value}
-    </text>
-  );
-}
-
 function RevenueLabel(props: any) {
   const { x, y, width, value } = props;
   if (!value) return null;
   return (
     <text
       x={x + width / 2}
-      y={y - 6}
+      y={y - 5}
       fill="var(--color-slate)"
-      fontSize={9}
+      fontSize={8}
+      fontWeight={600}
+      fontFamily="var(--font-serif)"
+      textAnchor="middle"
+    >
+      ${value}M
+    </text>
+  );
+}
+
+function GPLabel(props: any) {
+  const { x, y, width, value } = props;
+  if (!value) return null;
+  return (
+    <text
+      x={x + width / 2}
+      y={y - 5}
+      fill="var(--color-warm-600)"
+      fontSize={7}
       fontWeight={600}
       fontFamily="var(--font-serif)"
       textAnchor="middle"
@@ -62,9 +63,9 @@ function RevenueLabel(props: any) {
 export default function RevenueGPChart() {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart
+      <ComposedChart
         data={data}
-        margin={{ top: 24, right: 10, left: -5, bottom: 0 }}
+        margin={{ top: 20, right: 30, left: -5, bottom: 0 }}
         barCategoryGap="25%"
         barGap={2}
       >
@@ -83,7 +84,9 @@ export default function RevenueGPChart() {
           axisLine={{ stroke: "var(--color-warm-300)" }}
           tickLine={false}
         />
+        {/* Left Y-axis: USD millions */}
         <YAxis
+          yAxisId="left"
           tick={{
             fill: "var(--color-warm-500)",
             fontSize: 9,
@@ -92,23 +95,48 @@ export default function RevenueGPChart() {
           tickLine={false}
           tickFormatter={(v: number) => `$${v}M`}
         />
+        {/* Right Y-axis: GM% */}
+        <YAxis
+          yAxisId="right"
+          orientation="right"
+          domain={[0, 30]}
+          tick={{
+            fill: "var(--color-orange)",
+            fontSize: 9,
+            fontWeight: 500,
+          }}
+          axisLine={false}
+          tickLine={false}
+          tickFormatter={(v: number) => `${v}%`}
+        />
+        <Tooltip
+          contentStyle={{
+            background: "white",
+            border: "1px solid var(--color-warm-200)",
+            borderRadius: 6,
+            fontSize: "0.6875rem",
+          }}
+          formatter={(value: number, name: string) => {
+            if (name === "GM %") return [`${value}%`, name];
+            return [`$${value}M`, name];
+          }}
+        />
         <Legend
           verticalAlign="top"
           align="right"
-          iconType="square"
           iconSize={8}
           wrapperStyle={{
-            fontSize: "0.5625rem",
+            fontSize: "0.5rem",
             fontWeight: 600,
             letterSpacing: "0.04em",
-            color: "var(--color-warm-500)",
-            paddingBottom: "0.25rem",
+            paddingBottom: "0.125rem",
           }}
           formatter={(value: string) => (
-            <span style={{ color: "var(--color-warm-500)", fontSize: "0.5625rem" }}>{value}</span>
+            <span style={{ color: "var(--color-warm-500)", fontSize: "0.5rem" }}>{value}</span>
           )}
         />
-        <Bar dataKey="revenue" name="Revenue" radius={[3, 3, 0, 0]}>
+        {/* Revenue bars */}
+        <Bar yAxisId="left" dataKey="revenue" name="Revenue" radius={[3, 3, 0, 0]}>
           {data.map((entry) => (
             <Cell
               key={entry.year}
@@ -121,7 +149,8 @@ export default function RevenueGPChart() {
             content={<RevenueLabel />}
           />
         </Bar>
-        <Bar dataKey="gp" name="Gross Profit" radius={[3, 3, 0, 0]}>
+        {/* Gross Profit bars */}
+        <Bar yAxisId="left" dataKey="gp" name="Gross Profit" radius={[3, 3, 0, 0]}>
           {data.map((entry) => (
             <Cell
               key={entry.year}
@@ -129,12 +158,34 @@ export default function RevenueGPChart() {
             />
           ))}
           <LabelList
-            dataKey="gm"
+            dataKey="gp"
             position="top"
-            content={<GMLabel />}
+            content={<GPLabel />}
           />
         </Bar>
-      </BarChart>
+        {/* GM% line */}
+        <Line
+          yAxisId="right"
+          type="monotone"
+          dataKey="gm"
+          name="GM %"
+          stroke="var(--color-orange)"
+          strokeWidth={2}
+          strokeDasharray="5 3"
+          dot={{
+            r: 3,
+            fill: "var(--color-orange)",
+            stroke: "white",
+            strokeWidth: 1.5,
+          }}
+          activeDot={{
+            r: 4,
+            fill: "var(--color-orange)",
+            stroke: "white",
+            strokeWidth: 2,
+          }}
+        />
+      </ComposedChart>
     </ResponsiveContainer>
   );
 }
