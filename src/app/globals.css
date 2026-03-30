@@ -79,8 +79,7 @@ body { font-family: var(--font-sans); background: var(--color-black); color: var
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   [style*="opacity: 0"] { opacity: 1 !important; }
   [style*="transform: translate"] { transform: none !important; }
-  a, a:link, a:visited, a:active, a:hover { text-decoration: none !important; border: none !important; outline: none !important; background: transparent !important; box-shadow: none !important; color: inherit !important; -webkit-text-fill-color: inherit !important; }
-  .slide a[href] { color: inherit !important; -webkit-text-fill-color: inherit !important; }
+  a, a:link, a:visited, a:active, a:hover { text-decoration: none !important; border: none !important; outline: none !important; background: transparent !important; box-shadow: none !important; }
   .deck-container::after { display: none !important; content: none !important; }
 }
 
