@@ -27,6 +27,11 @@ function GpLabel(props: any) {
   if (!value) return null;
   return <text x={x+width/2} y={y-5} fill="rgba(255,255,255,0.55)" fontSize={7} fontWeight={600} fontFamily="var(--font-serif)" textAnchor="middle">${value}M</text>;
 }
+function GmDotLabel(props: any) {
+  const { x, y, value } = props;
+  if (value === undefined || value === null) return null;
+  return <text x={x} y={y - 8} fill={TEAL} fontSize={8} fontWeight={600} fontStyle="italic" textAnchor="middle">{value}%</text>;
+}
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 const legend = [
@@ -54,7 +59,7 @@ export default function RevenueGPChartDark() {
       </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart data={data} margin={{ top: 14, right: 30, left: -5, bottom: 0 }} barCategoryGap="25%" barGap={2}>
+          <ComposedChart data={data} margin={{ top: 20, right: 30, left: -5, bottom: 0 }} barCategoryGap="25%" barGap={2}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
             <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500 }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} tickLine={false} />
             <YAxis yAxisId="left" tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}M`} />
@@ -67,7 +72,17 @@ export default function RevenueGPChartDark() {
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? "rgba(247,118,53,0.4)" : "rgba(255,255,255,0.15)"} />)}
               <LabelList dataKey="gp" position="top" content={<GpLabel />} />
             </Bar>
-            <Line yAxisId="right" type="monotone" dataKey="gm" stroke={TEAL} strokeWidth={2} strokeDasharray="6 3" dot={false} />
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="gm"
+              stroke={TEAL}
+              strokeWidth={2}
+              strokeDasharray="6 3"
+              dot={{ r: 4, fill: TEAL, stroke: "rgba(10,17,24,0.8)", strokeWidth: 2 }}
+            >
+              <LabelList dataKey="gm" content={<GmDotLabel />} />
+            </Line>
           </ComposedChart>
         </ResponsiveContainer>
       </div>

@@ -102,8 +102,8 @@
 }
 
 :root {
-  --slide-padding-x: clamp(56px, 5vw, 80px);
-  --slide-padding-y: clamp(28px, 5vh, 56px);
+  --slide-padding-x: clamp(72px, 6vw, 100px);
+  --slide-padding-y: clamp(40px, 6vh, 72px);
 
   --text-display: clamp(4.5rem, 9vw, 7.5rem);
   --text-hero: clamp(2.5rem, 5vw, 4.5rem);
@@ -232,15 +232,12 @@ body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  /* Force Framer Motion elements visible */
   [style*="opacity: 0"] {
     opacity: 1 !important;
   }
-  /* Even spacing for investment highlights in print */
   .slide-body [style*="justify-content: space-between"] {
     justify-content: space-evenly !important;
   }
-  /* Remove link decoration and color overrides in print */
   a, a:link, a:visited, a:active, a:hover {
     text-decoration: none !important;
     border: none !important;
@@ -254,7 +251,6 @@ body {
     color: inherit !important;
     -webkit-text-fill-color: inherit !important;
   }
-  /* Prevent blank trailing page */
   .deck-container::after {
     display: none !important;
     content: none !important;

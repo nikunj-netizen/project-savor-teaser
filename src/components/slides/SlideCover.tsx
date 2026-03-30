@@ -79,23 +79,11 @@ export default function SlideCover() {
             textTransform: "uppercase",
             color: "rgba(255,255,255,0.85)",
             lineHeight: 1.5,
-            marginBottom: "1.5rem",
           }}
         >
           A Leading Omnichannel Food Distribution
           <br />
           Platform in the Philippines
-        </div>
-        <div
-          style={{
-            fontSize: "0.875rem",
-            fontWeight: 500,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.5)",
-          }}
-        >
-          [Strategic Investment]
         </div>
       </motion.div>
     </Slide>
