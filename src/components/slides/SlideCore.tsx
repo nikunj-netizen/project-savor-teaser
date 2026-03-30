@@ -17,6 +17,10 @@ const highlights = [
     number: "03",
     text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth.",
   },
+  {
+    number: "04",
+    text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk.",
+  },
 ];
 
 interface FinancialRow {
@@ -284,12 +288,12 @@ export default function SlideCore() {
           </div>
         </AnimateIn>
 
-        {/* Investment Highlights - compact, matching table height */}
+        {/* Investment Highlights */}
         <div>
           <AnimateIn delay={0.35}>
             <SectionLabel>Investment Highlights</SectionLabel>
           </AnimateIn>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.4 + i * 0.08}>
                 <div
