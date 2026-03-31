@@ -44,7 +44,7 @@ export default function SlideCondensed() {
       style={{
         background: "var(--color-surface-cream)",
         color: "var(--color-slate)",
-        paddingTop: "55px",
+        justifyContent: "space-between",
       }}
     >
       {/* Company Snapshot - full width */}
@@ -52,6 +52,7 @@ export default function SlideCondensed() {
         <SectionLabel>Company Snapshot</SectionLabel>
         <p
           style={{
+            fontFamily: "Inter, system-ui, sans-serif",
             fontSize: "0.8125rem",
             lineHeight: 1.65,
             color: "var(--color-warm-700)",
@@ -69,7 +70,7 @@ export default function SlideCondensed() {
         </p>
       </AnimateIn>
 
-      {/* At A Glance facts - no heading, consistent fonts */}
+      {/* At A Glance facts - no heading */}
       <AnimateIn delay={0.2}>
         <div
           style={{
@@ -107,7 +108,7 @@ export default function SlideCondensed() {
               <div>
                 <div
                   style={{
-                    fontFamily: "var(--font-serif)",
+                    fontFamily: "Inter, system-ui, sans-serif",
                     fontWeight: 700,
                     fontSize: "0.8125rem",
                     color: "white",
@@ -118,7 +119,7 @@ export default function SlideCondensed() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "var(--font-sans)",
+                    fontFamily: "Inter, system-ui, sans-serif",
                     fontSize: "0.4375rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
@@ -148,6 +149,7 @@ export default function SlideCondensed() {
         >
           <p
             style={{
+              fontFamily: "Inter, system-ui, sans-serif",
               fontSize: "0.8125rem",
               lineHeight: 1.65,
               color: "var(--color-warm-700)",
@@ -163,28 +165,27 @@ export default function SlideCondensed() {
             and small-scale distributors. Urbanization and rising incomes
             create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "282px" }}>
             {[
               { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
               { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
-              { value: "10-15%", label: "Cold-Chain Gr/Yr", accent: "var(--color-orange)" },
+              { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" },
             ].map((stat) => (
               <div
                 key={stat.label}
                 style={{
                   background: "white",
                   borderRadius: 6,
-                  padding: "0.5rem 0.5rem",
+                  padding: "0.5rem 0.375rem",
                   textAlign: "center",
                   borderLeft: `3px solid ${stat.accent}`,
-                  width: "88px",
                 }}
               >
                 <div
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.9375rem",
+                    fontSize: "0.875rem",
                     color: stat.accent,
                     lineHeight: 1,
                   }}
@@ -193,8 +194,8 @@ export default function SlideCondensed() {
                 </div>
                 <div
                   style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.4375rem",
+                    fontFamily: "Inter, system-ui, sans-serif",
+                    fontSize: "0.375rem",
                     fontWeight: 600,
                     letterSpacing: "0.05em",
                     textTransform: "uppercase",
@@ -268,7 +269,7 @@ export default function SlideCondensed() {
                   </span>
                   <p
                     style={{
-                      fontFamily: "var(--font-sans)",
+                      fontFamily: "Inter, system-ui, sans-serif",
                       fontSize: "0.75rem",
                       lineHeight: 1.55,
                       color: "var(--color-warm-700)",
