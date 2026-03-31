@@ -92,7 +92,7 @@ export default function SlideCore() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
         <AnimateIn delay={0.4}>
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div style={{ borderRadius: 6, padding: "0.35rem", height: "215px" }}><RevenueGPChart /></div>
+          <div style={{ borderRadius: 6, padding: "0.35rem", height: "237px" }}><RevenueGPChart /></div>
         </AnimateIn>
         <div>
           <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
