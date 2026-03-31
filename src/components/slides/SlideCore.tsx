@@ -49,17 +49,17 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
 export default function SlideCore() {
   return (
     <Slide className="slide-light" style={{ background: "var(--color-surface-cream)", color: "var(--color-slate)" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "0.4625rem" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: "2rem", marginBottom: "0.4625rem" }}>
         <AnimateIn delay={0.1}>
           <SectionLabel>Market Context</SectionLabel>
           <p style={{ fontSize: "0.67rem", lineHeight: 1.585, color: "var(--color-warm-700)", margin: 0, marginBottom: "0.4625rem", textAlign: "justify" }}>
             The Philippines meat market is valued at{" "}<strong>US$10.5B (2023)</strong>, projected to reach{" "}<strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>. Highly fragmented, with most volume flowing through wet markets and small-scale distributors. Urbanization and rising incomes create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.35rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.4rem" }}>
             {[{ value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" }, { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" }, { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" }].map((stat) => (
-              <div key={stat.label} style={{ background: "white", borderRadius: 5, padding: "0.35rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
-                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.86rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
-                <div style={{ fontSize: "0.49rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.125rem" }}>{stat.label}</div>
+              <div key={stat.label} style={{ background: "white", borderRadius: 5, padding: "0.4rem 0.35rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.9rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.5625rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.15rem" }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -79,18 +79,15 @@ export default function SlideCore() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d={fact.icon} /></svg>
               <div>
                 <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.74rem", color: "white", lineHeight: 1.1 }}>{fact.value}</div>
-                <div style={{ fontSize: "0.42rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: "0.0625rem" }}>{fact.label}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.42rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: "0.0625rem" }}>{fact.label}</div>
               </div>
             </div>
           ))}
         </div>
       </AnimateIn>
-      {/* Chart + Highlights: both columns stretch to same height */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "0.4625rem" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <AnimateIn delay={0.4}>
-            <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          </AnimateIn>
+          <AnimateIn delay={0.4}><SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel></AnimateIn>
           <div style={{ borderRadius: 6, padding: "0.35rem", flex: 1, minHeight: 0 }}><RevenueGPChart /></div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
