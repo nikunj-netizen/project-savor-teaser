@@ -69,7 +69,7 @@ export default function SlideCondensed() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
-                <div style={{ display: "flex", gap: "0.75rem", paddingTop: "0.4375rem", paddingBottom: "0.4375rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
+                <div style={{ display: "flex", gap: "0.75rem", paddingTop: "0.3rem", paddingBottom: "0.3rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
                   <span style={{ fontFamily: "var(--font-serif)", fontWeight: 600, fontSize: "0.9375rem", color: "var(--color-orange)", flexShrink: 0, width: "1.5rem" }}>{item.number}</span>
                   <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.75rem", lineHeight: 1.55, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>{item.text}</p>
                 </div>
