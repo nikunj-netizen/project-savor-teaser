@@ -47,7 +47,6 @@ export default function SlideCondensed() {
         justifyContent: "space-between",
       }}
     >
-      {/* Company Snapshot - full width */}
       <AnimateIn delay={0.1}>
         <SectionLabel>Company Snapshot</SectionLabel>
         <p
@@ -61,16 +60,18 @@ export default function SlideCondensed() {
             textAlign: "justify",
           }}
         >
-          A vertically integrated food importer, processor, and distributor with{" "}
-          <strong>11+ years</strong> of operating history in the Philippines.
-          Serves hotels, restaurants, supermarkets, and institutional buyers
-          across multiple protein categories through a B2B-dominant model.
-          Revenue surpassed <strong>US$18M in 2025</strong>, confirming strong
-          scale-up momentum.
+          In a <strong>US$10.5B</strong> meat market where most volume
+          still flows through wet markets and small-scale distributors,
+          this company has built what few competitors can replicate: an
+          end-to-end cold-chain platform spanning sourcing, processing,
+          and multi-channel distribution. With <strong>11+ years</strong> of
+          operating history, <strong>90% recurring B2B revenue</strong>, and{" "}
+          <strong>56% year-over-year growth</strong>, the business surpassed{" "}
+          <strong>US$18M</strong> in revenue in 2025 and is positioned to
+          capture outsized share as the market formalizes.
         </p>
       </AnimateIn>
 
-      {/* At A Glance facts - no heading */}
       <AnimateIn delay={0.2}>
         <div
           style={{
@@ -136,7 +137,6 @@ export default function SlideCondensed() {
         </div>
       </AnimateIn>
 
-      {/* Market Context - full width with inline stats */}
       <AnimateIn delay={0.3}>
         <SectionLabel>Market Context</SectionLabel>
         <div
@@ -211,7 +211,6 @@ export default function SlideCondensed() {
         </div>
       </AnimateIn>
 
-      {/* Chart (left) + Investment Highlights (right) */}
       <div
         style={{
           display: "grid",
@@ -225,9 +224,7 @@ export default function SlideCondensed() {
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
           <div
             style={{
-              background: "white",
               borderRadius: 6,
-              border: "1px solid var(--color-warm-200)",
               padding: "0.5rem",
               height: "240px",
             }}
