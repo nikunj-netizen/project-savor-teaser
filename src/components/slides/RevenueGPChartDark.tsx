@@ -40,7 +40,7 @@ export default function RevenueGPChartDark() {
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 0 }} barCategoryGap="25%" barGap={2}>
+          <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 0 }} barCategoryGap="12%" barGap={1}>
             <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
             <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? ORANGE : "rgba(255,255,255,0.3)"} />)}
