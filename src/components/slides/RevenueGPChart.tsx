@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid,
+  BarChart, Bar, XAxis,
   Cell, LabelList, ResponsiveContainer,
 } from "recharts";
 
@@ -51,10 +51,8 @@ export default function RevenueGPChart() {
       </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 20, right: 10, left: -5, bottom: 0 }} barCategoryGap="25%" barGap={2}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#ede8e2" vertical={false} />
-            <XAxis dataKey="year" tick={{ fill: SLATE, fontSize: 10, fontWeight: 500 }} axisLine={{ stroke: "#d4d0cb" }} tickLine={false} />
-            <YAxis tick={{ fill: "#8a8a8a", fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}M`} />
+          <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 0 }} barCategoryGap="25%" barGap={2}>
+            <XAxis dataKey="year" tick={{ fill: SLATE, fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
             <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? ORANGE : SLATE} />)}
               <LabelList dataKey="revenue" position="top" content={<RevLabel />} />

@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid,
+  BarChart, Bar, XAxis,
   Cell, LabelList, ResponsiveContainer,
 } from "recharts";
 
@@ -48,10 +48,8 @@ export default function RevenueGPChartDark() {
       </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 20, right: 10, left: -5, bottom: 0 }} barCategoryGap="25%" barGap={2}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
-            <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500 }} axisLine={{ stroke: "rgba(255,255,255,0.1)" }} tickLine={false} />
-            <YAxis tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}M`} />
+          <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 0 }} barCategoryGap="25%" barGap={2}>
+            <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
             <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? ORANGE : "rgba(255,255,255,0.3)"} />)}
               <LabelList dataKey="revenue" position="top" content={<RevLabel />} />
