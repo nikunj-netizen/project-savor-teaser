@@ -19,12 +19,12 @@ const data = [
 function RevLabel(props: any) {
   const { x, y, width, value } = props;
   if (!value) return null;
-  return <text x={x+width/2} y={y-5} fill="rgba(255,255,255,0.85)" fontSize={8} fontWeight={600} fontFamily="var(--font-serif)" textAnchor="middle">${value}M</text>;
+  return <text x={x+width/2} y={y-6} fill="rgba(255,255,255,0.85)" fontSize={10} fontWeight={600} fontFamily="Inter, system-ui, sans-serif" textAnchor="middle">${value}M</text>;
 }
 function GpLabel(props: any) {
   const { x, y, width, value } = props;
   if (!value) return null;
-  return <text x={x+width/2} y={y-5} fill="rgba(255,255,255,0.55)" fontSize={7} fontWeight={600} fontFamily="var(--font-serif)" textAnchor="middle">${value}M</text>;
+  return <text x={x+width/2} y={y-6} fill="rgba(255,255,255,0.55)" fontSize={9} fontWeight={600} fontFamily="Inter, system-ui, sans-serif" textAnchor="middle">${value}M</text>;
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
@@ -38,10 +38,18 @@ const legend = [
 export default function RevenueGPChartDark() {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem", marginBottom: "0.375rem", flexShrink: 0 }}>
+        {legend.map((it) => (
+          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
+            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
+            <span style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "7px", fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>{it.label}</span>
+          </div>
+        ))}
+      </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 14, right: 0, left: 0, bottom: 0 }} barCategoryGap="6%" barGap={1}>
-            <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
+          <BarChart data={data} margin={{ top: 18, right: 0, left: 0, bottom: 0 }} barCategoryGap="6%" barGap={1}>
+            <XAxis dataKey="year" tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10, fontWeight: 500, fontFamily: "Inter, system-ui, sans-serif" }} axisLine={false} tickLine={false} />
             <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? ORANGE : "rgba(255,255,255,0.3)"} />)}
               <LabelList dataKey="revenue" position="top" content={<RevLabel />} />
@@ -52,14 +60,6 @@ export default function RevenueGPChartDark() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-      </div>
-      <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem", marginTop: "0.25rem", flexShrink: 0 }}>
-        {legend.map((it) => (
-          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
-            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
-            <span style={{ fontSize: "7px", fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>{it.label}</span>
-          </div>
-        ))}
       </div>
     </div>
   );

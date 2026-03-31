@@ -22,12 +22,12 @@ const data = [
 function RevLabel(props: any) {
   const { x, y, width, value } = props;
   if (!value) return null;
-  return <text x={x+width/2} y={y-5} fill={SLATE} fontSize={8} fontWeight={600} fontFamily="var(--font-serif)" textAnchor="middle">${value}M</text>;
+  return <text x={x+width/2} y={y-6} fill={SLATE} fontSize={10} fontWeight={600} fontFamily="Inter, system-ui, sans-serif" textAnchor="middle">${value}M</text>;
 }
 function GpLabel(props: any) {
   const { x, y, width, value } = props;
   if (!value) return null;
-  return <text x={x+width/2} y={y-5} fill="#6b6b6b" fontSize={7} fontWeight={600} fontFamily="var(--font-serif)" textAnchor="middle">${value}M</text>;
+  return <text x={x+width/2} y={y-6} fill="#6b6b6b" fontSize={9} fontWeight={600} fontFamily="Inter, system-ui, sans-serif" textAnchor="middle">${value}M</text>;
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
@@ -41,10 +41,18 @@ const legend = [
 export default function RevenueGPChart() {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem", marginBottom: "0.375rem", flexShrink: 0 }}>
+        {legend.map((it) => (
+          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
+            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
+            <span style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "7px", fontWeight: 600, color: "#8a8a8a" }}>{it.label}</span>
+          </div>
+        ))}
+      </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 14, right: 0, left: 0, bottom: 0 }} barCategoryGap="6%" barGap={1}>
-            <XAxis dataKey="year" tick={{ fill: SLATE, fontSize: 10, fontWeight: 500 }} axisLine={false} tickLine={false} />
+          <BarChart data={data} margin={{ top: 18, right: 0, left: 0, bottom: 0 }} barCategoryGap="6%" barGap={1}>
+            <XAxis dataKey="year" tick={{ fill: SLATE, fontSize: 10, fontWeight: 500, fontFamily: "Inter, system-ui, sans-serif" }} axisLine={false} tickLine={false} />
             <Bar dataKey="revenue" radius={[3, 3, 0, 0]}>
               {data.map((e) => <Cell key={e.year} fill={e.forecast ? ORANGE : SLATE} />)}
               <LabelList dataKey="revenue" position="top" content={<RevLabel />} />
@@ -55,14 +63,6 @@ export default function RevenueGPChart() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-      </div>
-      <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem", marginTop: "0.25rem", flexShrink: 0 }}>
-        {legend.map((it) => (
-          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
-            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
-            <span style={{ fontSize: "7px", fontWeight: 600, color: "#8a8a8a" }}>{it.label}</span>
-          </div>
-        ))}
       </div>
     </div>
   );
