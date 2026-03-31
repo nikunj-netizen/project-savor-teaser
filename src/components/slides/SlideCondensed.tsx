@@ -17,9 +17,7 @@ const glanceFacts = [
   { label: "Operating History", value: "11+ Years", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
   { label: "Leadership", value: "5 Co-Founders", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
   { label: "Headquarters", value: "Philippines", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" },
-  { label: "Products", value: "Meat, Poultry, Seafood", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
-  { label: "Addressable Market", value: "US$10.5B", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
-  { label: "2025 Revenue", value: "US$18M+", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+  { label: "Products", value: "Meat, Poultry, Seafood, Groceries", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
 ];
 
 export default function SlideCondensed() {
@@ -31,40 +29,43 @@ export default function SlideCondensed() {
           A vertically integrated food distribution platform with <strong>11+ years</strong> of operating history across the Philippines. The company controls the full value chain from import sourcing and cold-chain processing through to last-mile delivery, serving <strong>100+ B2B clients</strong> including hotels, restaurant chains, and institutional buyers. Revenue has grown <strong>7x over three years</strong> to surpass <strong>US$18M in 2025</strong>, driven by a repeatable, capital-efficient model.
         </p>
       </AnimateIn>
+      {/* At A Glance: 4 cards, no heading */}
       <AnimateIn delay={0.2}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "0.5rem", marginBottom: "0.875rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "0.5rem", marginBottom: "0.875rem" }}>
           {glanceFacts.map((fact, i) => (
             <div key={fact.label} style={{ background: "var(--color-slate)", borderRadius: 6, padding: "0.5rem 0.625rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d={fact.icon} /></svg>
               <div>
-                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, fontSize: "0.75rem", color: "white", lineHeight: 1.15 }}>{fact.value}</div>
-                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.4375rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: "0.0625rem" }}>{fact.label}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, fontSize: "0.8125rem", color: "white", lineHeight: 1.15 }}>{fact.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.46rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: "0.0625rem" }}>{fact.label}</div>
               </div>
             </div>
           ))}
         </div>
       </AnimateIn>
+      {/* Market Context with wider stat cards */}
       <AnimateIn delay={0.3}>
         <SectionLabel>Market Context</SectionLabel>
-        <div style={{ display: "flex", gap: "2.5rem", alignItems: "start", marginBottom: "0.875rem" }}>
+        <div style={{ display: "flex", gap: "2rem", alignItems: "start", marginBottom: "0.875rem" }}>
           <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.8125rem", lineHeight: 1.65, color: "var(--color-warm-700)", margin: 0, flex: 1, textAlign: "justify" }}>
             The Philippines meat market is valued at{" "}<strong>US$10.5B (2023)</strong>, projected to reach{" "}<strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>. Highly fragmented, with most volume flowing through wet markets and small-scale distributors. Urbanization and rising incomes create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "282px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "310px" }}>
             {[{ value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" }, { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" }, { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" }].map((stat) => (
-              <div key={stat.label} style={{ background: "white", borderRadius: 6, padding: "0.5rem 0.375rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
-                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.875rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
-                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.375rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.1875rem" }}>{stat.label}</div>
+              <div key={stat.label} style={{ background: "white", borderRadius: 6, padding: "0.5rem 0.4rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.9375rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.5rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.1875rem" }}>{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </AnimateIn>
+      {/* Chart + Highlights */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start", flex: 1 }}>
-        <AnimateIn delay={0.4}>
-          <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div style={{ borderRadius: 6, padding: "0.5rem", height: "240px" }}><RevenueGPChart /></div>
-        </AnimateIn>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <AnimateIn delay={0.4}><SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel></AnimateIn>
+          <div style={{ borderRadius: 6, padding: "0.5rem", flex: 1, minHeight: 0 }}><RevenueGPChart /></div>
+        </div>
         <div>
           <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
