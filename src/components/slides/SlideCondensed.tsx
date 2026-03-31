@@ -6,26 +6,11 @@ import SectionLabel from "@/components/deck/SectionLabel";
 import RevenueGPChart from "@/components/slides/RevenueGPChart";
 
 const highlights = [
-  {
-    number: "01",
-    text: "Consolidation opportunity: positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach.",
-  },
-  {
-    number: "02",
-    text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery.",
-  },
-  {
-    number: "03",
-    text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth.",
-  },
-  {
-    number: "04",
-    text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk.",
-  },
-  {
-    number: "05",
-    text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure.",
-  },
+  { number: "01", text: "Consolidation opportunity: positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach." },
+  { number: "02", text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery." },
+  { number: "03", text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth." },
+  { number: "04", text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk." },
+  { number: "05", text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure." },
 ];
 
 const glanceFacts = [
@@ -39,243 +24,55 @@ const glanceFacts = [
 
 export default function SlideCondensed() {
   return (
-    <Slide
-      className="slide-light"
-      style={{
-        background: "var(--color-surface-cream)",
-        color: "var(--color-slate)",
-        justifyContent: "space-between",
-      }}
-    >
+    <Slide className="slide-light" style={{ background: "var(--color-surface-cream)", color: "var(--color-slate)", justifyContent: "space-between" }}>
       <AnimateIn delay={0.1}>
         <SectionLabel>Company Snapshot</SectionLabel>
-        <p
-          style={{
-            fontFamily: "Inter, system-ui, sans-serif",
-            fontSize: "0.8125rem",
-            lineHeight: 1.65,
-            color: "var(--color-warm-700)",
-            margin: 0,
-            marginBottom: "0.75rem",
-            textAlign: "justify",
-          }}
-        >
-          In a <strong>US$10.5B</strong> meat market where most volume
-          still flows through wet markets and small-scale distributors,
-          this company has built what few competitors can replicate: an
-          end-to-end cold-chain platform spanning sourcing, processing,
-          and multi-channel distribution. With <strong>11+ years</strong> of
-          operating history, <strong>90% recurring B2B revenue</strong>, and{" "}
-          <strong>56% year-over-year growth</strong>, the business surpassed{" "}
-          <strong>US$18M</strong> in revenue in 2025 and is positioned to
-          capture outsized share as the market formalizes.
+        <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.8125rem", lineHeight: 1.65, color: "var(--color-warm-700)", margin: 0, marginBottom: "0.75rem", textAlign: "justify" }}>
+          A vertically integrated food distribution platform with <strong>11+ years</strong> of operating history across the Philippines. The company controls the full value chain from import sourcing and cold-chain processing through to last-mile delivery, serving <strong>100+ B2B clients</strong> including hotels, restaurant chains, and institutional buyers. Revenue has grown <strong>7x over three years</strong> to surpass <strong>US$18M in 2025</strong>, driven by a repeatable, capital-efficient model.
         </p>
       </AnimateIn>
-
       <AnimateIn delay={0.2}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(6, 1fr)",
-            gap: "0.5rem",
-            marginBottom: "0.875rem",
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "0.5rem", marginBottom: "0.875rem" }}>
           {glanceFacts.map((fact, i) => (
-            <div
-              key={fact.label}
-              style={{
-                background: "var(--color-slate)",
-                borderRadius: 6,
-                padding: "0.5rem 0.625rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-              }}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ flexShrink: 0 }}
-              >
-                <path d={fact.icon} />
-              </svg>
+            <div key={fact.label} style={{ background: "var(--color-slate)", borderRadius: 6, padding: "0.5rem 0.625rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d={fact.icon} /></svg>
               <div>
-                <div
-                  style={{
-                    fontFamily: "Inter, system-ui, sans-serif",
-                    fontWeight: 700,
-                    fontSize: "0.75rem",
-                    color: "white",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  {fact.value}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "Inter, system-ui, sans-serif",
-                    fontSize: "0.4375rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.5)",
-                    marginTop: "0.0625rem",
-                  }}
-                >
-                  {fact.label}
-                </div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, fontSize: "0.75rem", color: "white", lineHeight: 1.15 }}>{fact.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.4375rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: "0.0625rem" }}>{fact.label}</div>
               </div>
             </div>
           ))}
         </div>
       </AnimateIn>
-
       <AnimateIn delay={0.3}>
         <SectionLabel>Market Context</SectionLabel>
-        <div
-          style={{
-            display: "flex",
-            gap: "2.5rem",
-            alignItems: "start",
-            marginBottom: "0.875rem",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "Inter, system-ui, sans-serif",
-              fontSize: "0.8125rem",
-              lineHeight: 1.65,
-              color: "var(--color-warm-700)",
-              margin: 0,
-              flex: 1,
-              textAlign: "justify",
-            }}
-          >
-            The Philippines meat market is valued at{" "}
-            <strong>US$10.5B (2023)</strong>, projected to reach{" "}
-            <strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>.
-            Highly fragmented, with most volume flowing through wet markets
-            and small-scale distributors. Urbanization and rising incomes
-            create a consolidation opportunity for cold-chain-enabled platforms.
+        <div style={{ display: "flex", gap: "2.5rem", alignItems: "start", marginBottom: "0.875rem" }}>
+          <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.8125rem", lineHeight: 1.65, color: "var(--color-warm-700)", margin: 0, flex: 1, textAlign: "justify" }}>
+            The Philippines meat market is valued at{" "}<strong>US$10.5B (2023)</strong>, projected to reach{" "}<strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>. Highly fragmented, with most volume flowing through wet markets and small-scale distributors. Urbanization and rising incomes create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "282px" }}>
-            {[
-              { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
-              { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
-              { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                style={{
-                  background: "white",
-                  borderRadius: 6,
-                  padding: "0.5rem 0.375rem",
-                  textAlign: "center",
-                  borderLeft: `3px solid ${stat.accent}`,
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontWeight: 700,
-                    fontSize: "0.875rem",
-                    color: stat.accent,
-                    lineHeight: 1,
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "Inter, system-ui, sans-serif",
-                    fontSize: "0.375rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    color: "var(--color-warm-500)",
-                    marginTop: "0.1875rem",
-                  }}
-                >
-                  {stat.label}
-                </div>
+            {[{ value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" }, { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" }, { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" }].map((stat) => (
+              <div key={stat.label} style={{ background: "white", borderRadius: 6, padding: "0.5rem 0.375rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.875rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.375rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.1875rem" }}>{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </AnimateIn>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2.5rem",
-          alignItems: "start",
-          flex: 1,
-        }}
-      >
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start", flex: 1 }}>
         <AnimateIn delay={0.4}>
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div
-            style={{
-              borderRadius: 6,
-              padding: "0.5rem",
-              height: "240px",
-            }}
-          >
-            <RevenueGPChart />
-          </div>
+          <div style={{ borderRadius: 6, padding: "0.5rem", height: "240px" }}><RevenueGPChart /></div>
         </AnimateIn>
-
         <div>
-          <AnimateIn delay={0.45}>
-            <SectionLabel>Investment Highlights</SectionLabel>
-          </AnimateIn>
+          <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.75rem",
-                    paddingTop: "0.4375rem",
-                    paddingBottom: "0.4375rem",
-                    borderBottom:
-                      i < highlights.length - 1
-                        ? "1px solid var(--color-warm-200)"
-                        : "none",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontWeight: 600,
-                      fontSize: "0.9375rem",
-                      color: "var(--color-orange)",
-                      flexShrink: 0,
-                      width: "1.5rem",
-                    }}
-                  >
-                    {item.number}
-                  </span>
-                  <p
-                    style={{
-                      fontFamily: "Inter, system-ui, sans-serif",
-                      fontSize: "0.75rem",
-                      lineHeight: 1.55,
-                      color: "var(--color-warm-700)",
-                      margin: 0,
-                      textAlign: "justify",
-                    }}
-                  >
-                    {item.text}
-                  </p>
+                <div style={{ display: "flex", gap: "0.75rem", paddingTop: "0.4375rem", paddingBottom: "0.4375rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
+                  <span style={{ fontFamily: "var(--font-serif)", fontWeight: 600, fontSize: "0.9375rem", color: "var(--color-orange)", flexShrink: 0, width: "1.5rem" }}>{item.number}</span>
+                  <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.75rem", lineHeight: 1.55, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>{item.text}</p>
                 </div>
               </AnimateIn>
             ))}

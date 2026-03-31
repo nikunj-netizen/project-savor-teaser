@@ -50,16 +50,7 @@ const clientSegs = [
 
 function SlateSectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      style={{
-        fontSize: "0.79rem",
-        fontWeight: 600,
-        letterSpacing: "0.14em",
-        textTransform: "uppercase" as const,
-        color: "var(--color-slate)",
-        marginBottom: "0.4625rem",
-      }}
-    >
+    <div style={{ fontSize: "0.79rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "var(--color-slate)", marginBottom: "0.4625rem" }}>
       {children}
     </div>
   );
@@ -68,62 +59,18 @@ function SlateSectionLabel({ children }: { children: React.ReactNode }) {
 function StackedBar({ data }: { data: { label: string; pct: number; color: string }[] }) {
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          height: 23,
-          borderRadius: 4,
-          overflow: "hidden",
-          marginBottom: "0.34rem",
-        }}
-      >
+      <div style={{ display: "flex", height: 23, borderRadius: 4, overflow: "hidden", marginBottom: "0.34rem" }}>
         {data.map((seg) => (
-          <div
-            key={seg.label}
-            style={{
-              width: `${seg.pct}%`,
-              background: seg.color,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span
-              style={{
-                fontSize: seg.pct >= 15 ? "0.54rem" : "0.4375rem",
-                fontWeight: 600,
-                color: "white",
-              }}
-            >
-              {seg.pct}%
-            </span>
+          <div key={seg.label} style={{ width: `${seg.pct}%`, background: seg.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontSize: seg.pct >= 15 ? "0.54rem" : "0.4375rem", fontWeight: 600, color: "white" }}>{seg.pct}%</span>
           </div>
         ))}
       </div>
       <div style={{ display: "flex", gap: "0.73rem", flexWrap: "wrap" }}>
         {data.map((seg) => (
-          <div
-            key={seg.label}
-            style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}
-          >
-            <div
-              style={{
-                width: 9,
-                height: 9,
-                borderRadius: 2,
-                background: seg.color,
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontSize: "0.67rem",
-                fontWeight: 500,
-                color: "var(--color-warm-700)",
-              }}
-            >
-              {seg.label}
-            </span>
+          <div key={seg.label} style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+            <div style={{ width: 9, height: 9, borderRadius: 2, background: seg.color, flexShrink: 0 }} />
+            <span style={{ fontSize: "0.67rem", fontWeight: 500, color: "var(--color-warm-700)" }}>{seg.label}</span>
           </div>
         ))}
       </div>
@@ -133,290 +80,70 @@ function StackedBar({ data }: { data: { label: string; pct: number; color: strin
 
 export default function SlideCore() {
   return (
-    <Slide
-      className="slide-light"
-      style={{
-        background: "var(--color-surface-cream)",
-        color: "var(--color-slate)",
-      }}
-    >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
-          marginBottom: "0.4625rem",
-        }}
-      >
+    <Slide className="slide-light" style={{ background: "var(--color-surface-cream)", color: "var(--color-slate)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "0.4625rem" }}>
         <AnimateIn delay={0.1}>
           <SectionLabel>Market Context</SectionLabel>
-          <p
-            style={{
-              fontSize: "0.67rem",
-              lineHeight: 1.585,
-              color: "var(--color-warm-700)",
-              margin: 0,
-              marginBottom: "0.4625rem",
-              textAlign: "justify",
-            }}
-          >
-            The Philippines meat market is valued at{" "}
-            <strong>US$10.5B (2023)</strong>, projected to reach{" "}
-            <strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>.
-            Highly fragmented, with most volume flowing through wet markets
-            and small-scale distributors. Urbanization and rising incomes
-            create a consolidation opportunity for cold-chain-enabled platforms.
+          <p style={{ fontSize: "0.67rem", lineHeight: 1.585, color: "var(--color-warm-700)", margin: 0, marginBottom: "0.4625rem", textAlign: "justify" }}>
+            The Philippines meat market is valued at{" "}<strong>US$10.5B (2023)</strong>, projected to reach{" "}<strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>. Highly fragmented, with most volume flowing through wet markets and small-scale distributors. Urbanization and rising incomes create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "0.35rem",
-            }}
-          >
-            {[
-              { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
-              { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
-              { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                style={{
-                  background: "white",
-                  borderRadius: 5,
-                  padding: "0.35rem",
-                  textAlign: "center",
-                  borderLeft: `3px solid ${stat.accent}`,
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontWeight: 700,
-                    fontSize: "0.86rem",
-                    color: stat.accent,
-                    lineHeight: 1,
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.49rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "var(--color-warm-500)",
-                    marginTop: "0.125rem",
-                  }}
-                >
-                  {stat.label}
-                </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.35rem" }}>
+            {[{ value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" }, { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" }, { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" }].map((stat) => (
+              <div key={stat.label} style={{ background: "white", borderRadius: 5, padding: "0.35rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.86rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontSize: "0.49rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.125rem" }}>{stat.label}</div>
               </div>
             ))}
           </div>
         </AnimateIn>
-
         <AnimateIn delay={0.2}>
           <SectionLabel>Company Snapshot</SectionLabel>
-          <p
-            style={{
-              fontSize: "0.67rem",
-              lineHeight: 1.585,
-              color: "var(--color-warm-700)",
-              margin: 0,
-              textAlign: "justify",
-            }}
-          >
-            In a <strong>US$10.5B</strong> meat market where most volume
-            still flows through wet markets and small-scale distributors,
-            this company has built what few competitors can replicate: an
-            end-to-end cold-chain platform spanning sourcing, processing,
-            and multi-channel distribution. With <strong>11+ years</strong> of
-            operating history, <strong>90% recurring B2B revenue</strong>, and{" "}
-            <strong>56% year-over-year growth</strong>, the business surpassed{" "}
-            <strong>US$18M</strong> in revenue in 2025 and is positioned to
-            capture outsized share as the market formalizes.
+          <p style={{ fontSize: "0.67rem", lineHeight: 1.585, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>
+            A vertically integrated food distribution platform with <strong>11+ years</strong> of operating history across the Philippines. The company controls the full value chain from import sourcing and cold-chain processing through to last-mile delivery, serving <strong>100+ B2B clients</strong> including hotels, restaurant chains, and institutional buyers. Revenue has grown <strong>7x over three years</strong> to surpass <strong>US$18M in 2025</strong>, driven by a repeatable, capital-efficient model.
           </p>
         </AnimateIn>
       </div>
-
       <AnimateIn delay={0.3}>
         <SlateSectionLabel>At A Glance</SlateSectionLabel>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: "0.35rem",
-            marginBottom: "0.4625rem",
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "0.35rem", marginBottom: "0.4625rem" }}>
           {glanceFacts.map((fact, i) => (
-            <div
-              key={fact.label}
-              style={{
-                background: "var(--color-slate)",
-                borderRadius: 5,
-                padding: "0.35rem 0.47rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.35rem",
-              }}
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ flexShrink: 0 }}
-              >
-                <path d={fact.icon} />
-              </svg>
+            <div key={fact.label} style={{ background: "var(--color-slate)", borderRadius: 5, padding: "0.35rem 0.47rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={i % 2 === 0 ? "var(--color-orange)" : "rgba(255,255,255,0.7)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d={fact.icon} /></svg>
               <div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontWeight: 700,
-                    fontSize: "0.74rem",
-                    color: "white",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  {fact.value}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.42rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.55)",
-                    marginTop: "0.0625rem",
-                  }}
-                >
-                  {fact.label}
-                </div>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.74rem", color: "white", lineHeight: 1.1 }}>{fact.value}</div>
+                <div style={{ fontSize: "0.42rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: "0.0625rem" }}>{fact.label}</div>
               </div>
             </div>
           ))}
         </div>
       </AnimateIn>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
-          alignItems: "start",
-          marginBottom: "0.4625rem",
-        }}
-      >
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
         <AnimateIn delay={0.4}>
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div
-            style={{
-              borderRadius: 6,
-              padding: "0.35rem",
-              height: "187px",
-            }}
-          >
-            <RevenueGPChart />
-          </div>
+          <div style={{ borderRadius: 6, padding: "0.35rem", height: "187px" }}><RevenueGPChart /></div>
         </AnimateIn>
-
         <div>
-          <AnimateIn delay={0.45}>
-            <SectionLabel>Investment Highlights</SectionLabel>
-          </AnimateIn>
+          <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.72rem",
-                    paddingTop: "0.29rem",
-                    paddingBottom: "0.29rem",
-                    borderBottom:
-                      i < highlights.length - 1
-                        ? "1px solid var(--color-warm-200)"
-                        : "none",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontWeight: 600,
-                      fontSize: "0.79rem",
-                      color: "var(--color-orange)",
-                      flexShrink: 0,
-                      width: "1.46rem",
-                    }}
-                  >
-                    {item.number}
-                  </span>
-                  <p
-                    style={{
-                      fontSize: "0.6rem",
-                      lineHeight: 1.485,
-                      color: "var(--color-warm-700)",
-                      margin: 0,
-                      textAlign: "justify",
-                    }}
-                  >
-                    {item.text}
-                  </p>
+                <div style={{ display: "flex", gap: "0.72rem", paddingTop: "0.29rem", paddingBottom: "0.29rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
+                  <span style={{ fontFamily: "var(--font-serif)", fontWeight: 600, fontSize: "0.79rem", color: "var(--color-orange)", flexShrink: 0, width: "1.46rem" }}>{item.number}</span>
+                  <p style={{ fontSize: "0.6rem", lineHeight: 1.485, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>{item.text}</p>
                 </div>
               </AnimateIn>
             ))}
           </div>
         </div>
       </div>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "2rem",
-          alignItems: "start",
-          marginBottom: "0.4625rem",
-        }}
-      >
-        <AnimateIn delay={0.7}>
-          <SectionLabel>Revenue by Channel</SectionLabel>
-          <StackedBar data={channels} />
-        </AnimateIn>
-
-        <AnimateIn delay={0.75}>
-          <SectionLabel>Client Diversification</SectionLabel>
-          <StackedBar data={clientSegs} />
-        </AnimateIn>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
+        <AnimateIn delay={0.7}><SectionLabel>Revenue by Channel</SectionLabel><StackedBar data={channels} /></AnimateIn>
+        <AnimateIn delay={0.75}><SectionLabel>Client Diversification</SectionLabel><StackedBar data={clientSegs} /></AnimateIn>
       </div>
-
       <AnimateIn delay={0.8}>
         <SectionLabel>Transaction Overview</SectionLabel>
-        <p
-          style={{
-            fontSize: "0.65rem",
-            lineHeight: 1.57,
-            color: "var(--color-warm-700)",
-            margin: 0,
-            textAlign: "justify",
-          }}
-        >
-          The shareholders are exploring a{" "}
-          <strong style={{ color: "var(--color-slate)" }}>
-            [strategic investment]
-          </strong>{" "}
-          to accelerate the company&#8217;s next phase of growth, with a
-          clear path to US$45M+ in revenue and expanding EBITDA margins.
-          Proceeds will be deployed toward working capital, infrastructure,
-          and scaling the distribution network. Details and projections
-          available upon execution of NDA.
+        <p style={{ fontSize: "0.65rem", lineHeight: 1.57, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>
+          The shareholders are exploring a{" "}<strong style={{ color: "var(--color-slate)" }}>[strategic investment]</strong>{" "}to accelerate the company&#8217;s next phase of growth, with a clear path to US$45M+ in revenue and expanding EBITDA margins. Proceeds will be deployed toward working capital, infrastructure, and scaling the distribution network. Details and projections available upon execution of NDA.
         </p>
       </AnimateIn>
     </Slide>
