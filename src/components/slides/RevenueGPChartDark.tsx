@@ -30,7 +30,7 @@ function GpLabel(props: any) {
 function GmDotLabel(props: any) {
   const { x, y, value } = props;
   if (value === undefined || value === null) return null;
-  return <text x={x} y={y - 8} fill={TEAL} fontSize={8} fontWeight={600} fontStyle="italic" textAnchor="middle">{value}%</text>;
+  return <text x={x} y={y + 16} fill={TEAL} fontSize={8} fontWeight={600} fontStyle="italic" textAnchor="middle">{value}%</text>;
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
