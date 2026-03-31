@@ -5,7 +5,6 @@ interface SectionLabelProps {
   color?: string;
 }
 
-/** Orange uppercase section label — used across many slide types */
 export default function SectionLabel({
   children,
   color = "var(--color-orange)",
@@ -13,12 +12,12 @@ export default function SectionLabel({
   return (
     <div
       style={{
-        fontSize: "0.8125rem",
+        fontSize: "0.79rem",
         fontWeight: 600,
         letterSpacing: "0.14em",
         textTransform: "uppercase",
         color,
-        marginBottom: "0.5rem",
+        marginBottom: "0.4625rem",
       }}
     >
       {children}

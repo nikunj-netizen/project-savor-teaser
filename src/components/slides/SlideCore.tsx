@@ -33,10 +33,6 @@ const clientSegs = [
   { label: "Remaining", pct: 37, color: "var(--color-warm-400)" },
 ];
 
-function SlateSectionLabel({ children }: { children: React.ReactNode }) {
-  return (<div style={{ fontSize: "0.79rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "var(--color-slate)", marginBottom: "0.4625rem" }}>{children}</div>);
-}
-
 function StackedBar({ data }: { data: { label: string; pct: number; color: string }[] }) {
   return (
     <div>
@@ -76,7 +72,7 @@ export default function SlideCore() {
         </AnimateIn>
       </div>
       <AnimateIn delay={0.3}>
-        <SlateSectionLabel>At A Glance</SlateSectionLabel>
+        <SectionLabel color="var(--color-slate)">At A Glance</SectionLabel>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "0.35rem", marginBottom: "0.4625rem" }}>
           {glanceFacts.map((fact, i) => (
             <div key={fact.label} style={{ background: "var(--color-slate)", borderRadius: 5, padding: "0.35rem 0.47rem", display: "flex", alignItems: "center", gap: "0.35rem" }}>
@@ -101,7 +97,7 @@ export default function SlideCore() {
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
                 <div style={{ display: "flex", gap: "0.72rem", paddingTop: "0.29rem", paddingBottom: "0.29rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
                   <span style={{ fontFamily: "var(--font-serif)", fontWeight: 600, fontSize: "0.79rem", color: "var(--color-orange)", flexShrink: 0, width: "1.46rem" }}>{item.number}</span>
-                  <p style={{ fontSize: "0.6rem", lineHeight: 1.485, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>{item.text}</p>
+                  <p style={{ fontSize: "0.67rem", lineHeight: 1.485, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>{item.text}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -114,7 +110,7 @@ export default function SlideCore() {
       </div>
       <AnimateIn delay={0.8}>
         <SectionLabel>Transaction Overview</SectionLabel>
-        <p style={{ fontSize: "0.65rem", lineHeight: 1.57, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>
+        <p style={{ fontSize: "0.67rem", lineHeight: 1.57, color: "var(--color-warm-700)", margin: 0, textAlign: "justify" }}>
           The shareholders are exploring a{" "}<strong style={{ color: "var(--color-slate)" }}>[strategic investment]</strong>{" "}to accelerate the company&#8217;s next phase of growth, with a clear path to US$45M+ in revenue and expanding EBITDA margins. Proceeds will be deployed toward working capital, infrastructure, and scaling the distribution network. Details and projections available upon execution of NDA.
         </p>
       </AnimateIn>
