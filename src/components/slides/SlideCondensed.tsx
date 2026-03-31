@@ -45,15 +45,15 @@ export default function SlideCondensed() {
       </AnimateIn>
       <AnimateIn delay={0.3}>
         <SectionLabel>Market Context</SectionLabel>
-        <div style={{ display: "flex", gap: "2rem", alignItems: "start", marginBottom: "0.875rem" }}>
+        <div style={{ display: "flex", gap: "1.5rem", alignItems: "start", marginBottom: "0.875rem" }}>
           <p style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.8125rem", lineHeight: 1.65, color: "var(--color-warm-700)", margin: 0, flex: 1, textAlign: "justify" }}>
             The Philippines meat market is valued at{" "}<strong>US$10.5B (2023)</strong>, projected to reach{" "}<strong>US$12B by 2028</strong> at a <strong>2.7% CAGR</strong>. Highly fragmented, with most volume flowing through wet markets and small-scale distributors. Urbanization and rising incomes create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "320px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0, width: "400px" }}>
             {[{ value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" }, { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" }, { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" }].map((stat) => (
               <div key={stat.label} style={{ background: "white", borderRadius: 6, padding: "0.5rem 0.4rem", textAlign: "center", borderLeft: `3px solid ${stat.accent}` }}>
-                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "0.9375rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
-                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.4375rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.1875rem" }}>{stat.label}</div>
+                <div style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: "1rem", color: stat.accent, lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: "0.5rem", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-warm-500)", marginTop: "0.1875rem" }}>{stat.label}</div>
               </div>
             ))}
           </div>
