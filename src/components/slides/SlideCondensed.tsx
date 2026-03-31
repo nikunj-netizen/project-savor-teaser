@@ -10,7 +10,7 @@ const highlights = [
   { number: "02", text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery." },
   { number: "03", text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth." },
   { number: "04", text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk." },
-  { number: "05", text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure." },
+  { number: "05", text: "Clear growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure." },
 ];
 
 const glanceFacts = [
