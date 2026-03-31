@@ -41,14 +41,6 @@ const legend = [
 export default function RevenueGPChart() {
   return (
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem", marginBottom: "0.125rem", flexShrink: 0 }}>
-        {legend.map((it) => (
-          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
-            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
-            <span style={{ fontSize: "7px", fontWeight: 600, color: "#8a8a8a" }}>{it.label}</span>
-          </div>
-        ))}
-      </div>
       <div style={{ flex: 1, minHeight: 0 }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 0 }} barCategoryGap="25%" barGap={2}>
@@ -63,6 +55,14 @@ export default function RevenueGPChart() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
+      </div>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem", marginTop: "0.25rem", flexShrink: 0 }}>
+        {legend.map((it) => (
+          <div key={it.label} style={{ display: "flex", alignItems: "center", gap: "3px" }}>
+            <div style={{ width: 8, height: 8, borderRadius: 1, background: it.color }} />
+            <span style={{ fontSize: "7px", fontWeight: 600, color: "#8a8a8a" }}>{it.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
