@@ -6,26 +6,11 @@ import SectionLabel from "@/components/deck/SectionLabel";
 import RevenueGPChart from "@/components/slides/RevenueGPChart";
 
 const highlights = [
-  {
-    number: "01",
-    text: "Consolidation opportunity: positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach.",
-  },
-  {
-    number: "02",
-    text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery.",
-  },
-  {
-    number: "03",
-    text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth.",
-  },
-  {
-    number: "04",
-    text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk.",
-  },
-  {
-    number: "05",
-    text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure.",
-  },
+  { number: "01", text: "Consolidation opportunity: positioned to capture share from informal operators lacking cold-chain infrastructure and logistics reach." },
+  { number: "02", text: "Operational moat through end-to-end control, from import sourcing and processing through to last-mile delivery." },
+  { number: "03", text: "Capital-constrained, not demand-constrained: investment directly accelerates revenue growth." },
+  { number: "04", text: "Multi-layered diversification across products (beef, pork, poultry, seafood), client segments, and distribution channels reduces volatility and concentration risk." },
+  { number: "05", text: "Clear, repeatable growth playbook across five levers: deepening key accounts, expanding client base, scaling operations, launching branded products, and building cold-chain infrastructure." },
 ];
 
 const glanceFacts = [
@@ -49,30 +34,17 @@ const clientSegs = [
 ];
 
 function SlateSectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ fontSize: "0.79rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "var(--color-slate)", marginBottom: "0.4625rem" }}>
-      {children}
-    </div>
-  );
+  return (<div style={{ fontSize: "0.79rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "var(--color-slate)", marginBottom: "0.4625rem" }}>{children}</div>);
 }
 
 function StackedBar({ data }: { data: { label: string; pct: number; color: string }[] }) {
   return (
     <div>
       <div style={{ display: "flex", height: 23, borderRadius: 4, overflow: "hidden", marginBottom: "0.34rem" }}>
-        {data.map((seg) => (
-          <div key={seg.label} style={{ width: `${seg.pct}%`, background: seg.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ fontSize: seg.pct >= 15 ? "0.54rem" : "0.4375rem", fontWeight: 600, color: "white" }}>{seg.pct}%</span>
-          </div>
-        ))}
+        {data.map((seg) => (<div key={seg.label} style={{ width: `${seg.pct}%`, background: seg.color, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontSize: seg.pct >= 15 ? "0.54rem" : "0.4375rem", fontWeight: 600, color: "white" }}>{seg.pct}%</span></div>))}
       </div>
       <div style={{ display: "flex", gap: "0.73rem", flexWrap: "wrap" }}>
-        {data.map((seg) => (
-          <div key={seg.label} style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-            <div style={{ width: 9, height: 9, borderRadius: 2, background: seg.color, flexShrink: 0 }} />
-            <span style={{ fontSize: "0.67rem", fontWeight: 500, color: "var(--color-warm-700)" }}>{seg.label}</span>
-          </div>
-        ))}
+        {data.map((seg) => (<div key={seg.label} style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}><div style={{ width: 9, height: 9, borderRadius: 2, background: seg.color, flexShrink: 0 }} /><span style={{ fontSize: "0.67rem", fontWeight: 500, color: "var(--color-warm-700)" }}>{seg.label}</span></div>))}
       </div>
     </div>
   );
@@ -117,14 +89,14 @@ export default function SlideCore() {
           ))}
         </div>
       </AnimateIn>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
-        <AnimateIn delay={0.4}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "stretch", marginBottom: "0.4625rem" }}>
+        <AnimateIn delay={0.4} style={{ display: "flex", flexDirection: "column" }}>
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div style={{ borderRadius: 6, padding: "0.35rem", height: "187px" }}><RevenueGPChart /></div>
+          <div style={{ borderRadius: 6, padding: "0.35rem", flex: 1 }}><RevenueGPChart /></div>
         </AnimateIn>
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
                 <div style={{ display: "flex", gap: "0.72rem", paddingTop: "0.29rem", paddingBottom: "0.29rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
