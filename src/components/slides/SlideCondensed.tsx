@@ -110,7 +110,7 @@ export default function SlideCondensed() {
                   style={{
                     fontFamily: "Inter, system-ui, sans-serif",
                     fontWeight: 700,
-                    fontSize: "0.8125rem",
+                    fontSize: "0.75rem",
                     color: "white",
                     lineHeight: 1.15,
                   }}
