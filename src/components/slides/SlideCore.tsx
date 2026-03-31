@@ -89,14 +89,14 @@ export default function SlideCore() {
           ))}
         </div>
       </AnimateIn>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "stretch", marginBottom: "0.4625rem" }}>
-        <AnimateIn delay={0.4} style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
+        <AnimateIn delay={0.4}>
           <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div style={{ borderRadius: 6, padding: "0.35rem", flex: 1 }}><RevenueGPChart /></div>
+          <div style={{ borderRadius: 6, padding: "0.35rem", height: "215px" }}><RevenueGPChart /></div>
         </AnimateIn>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div>
           <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
-          <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
               <AnimateIn key={item.number} delay={0.5 + i * 0.06}>
                 <div style={{ display: "flex", gap: "0.72rem", paddingTop: "0.29rem", paddingBottom: "0.29rem", borderBottom: i < highlights.length - 1 ? "1px solid var(--color-warm-200)" : "none" }}>
