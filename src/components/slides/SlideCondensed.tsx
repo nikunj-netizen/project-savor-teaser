@@ -44,6 +44,7 @@ export default function SlideCondensed() {
       style={{
         background: "var(--color-surface-cream)",
         color: "var(--color-slate)",
+        paddingTop: "55px",
       }}
     >
       {/* Company Snapshot - full width */}
@@ -68,7 +69,7 @@ export default function SlideCondensed() {
         </p>
       </AnimateIn>
 
-      {/* At A Glance facts - no heading */}
+      {/* At A Glance facts - no heading, consistent fonts */}
       <AnimateIn delay={0.2}>
         <div
           style={{
@@ -108,20 +109,21 @@ export default function SlideCondensed() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "0.875rem",
+                    fontSize: "0.8125rem",
                     color: "white",
-                    lineHeight: 1.1,
+                    lineHeight: 1.15,
                   }}
                 >
                   {fact.value}
                 </div>
                 <div
                   style={{
-                    fontSize: "0.5rem",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.4375rem",
                     fontWeight: 600,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.55)",
+                    color: "rgba(255,255,255,0.5)",
                     marginTop: "0.0625rem",
                   }}
                 >
@@ -161,28 +163,28 @@ export default function SlideCondensed() {
             and small-scale distributors. Urbanization and rising incomes
             create a consolidation opportunity for cold-chain-enabled platforms.
           </p>
-          <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.5rem", flexShrink: 0 }}>
             {[
               { value: "5.7%", label: "GDP Growth", accent: "var(--color-orange)" },
               { value: "+20%", label: "Meat Imports YoY", accent: "var(--color-slate)" },
-              { value: "10-15%", label: "Cold-Chain Growth/Yr", accent: "var(--color-orange)" },
+              { value: "10-15%", label: "Cold-Chain Gr/Yr", accent: "var(--color-orange)" },
             ].map((stat) => (
               <div
                 key={stat.label}
                 style={{
                   background: "white",
                   borderRadius: 6,
-                  padding: "0.5rem 0.625rem",
+                  padding: "0.5rem 0.5rem",
                   textAlign: "center",
                   borderLeft: `3px solid ${stat.accent}`,
-                  minWidth: "90px",
+                  width: "88px",
                 }}
               >
                 <div
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontWeight: 700,
-                    fontSize: "1rem",
+                    fontSize: "0.9375rem",
                     color: stat.accent,
                     lineHeight: 1,
                   }}
@@ -191,9 +193,10 @@ export default function SlideCondensed() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.5rem",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.4375rem",
                     fontWeight: 600,
-                    letterSpacing: "0.06em",
+                    letterSpacing: "0.05em",
                     textTransform: "uppercase",
                     color: "var(--color-warm-500)",
                     marginTop: "0.1875rem",
@@ -265,6 +268,7 @@ export default function SlideCondensed() {
                   </span>
                   <p
                     style={{
+                      fontFamily: "var(--font-sans)",
                       fontSize: "0.75rem",
                       lineHeight: 1.55,
                       color: "var(--color-warm-700)",
