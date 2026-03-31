@@ -85,12 +85,15 @@ export default function SlideCore() {
           ))}
         </div>
       </AnimateIn>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start", marginBottom: "0.4625rem" }}>
-        <AnimateIn delay={0.4}>
-          <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
-          <div style={{ borderRadius: 6, padding: "0.35rem", height: "305px" }}><RevenueGPChart /></div>
-        </AnimateIn>
-        <div>
+      {/* Chart + Highlights: both columns stretch to same height */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "0.4625rem" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <AnimateIn delay={0.4}>
+            <SectionLabel>Revenue &amp; Gross Profit (US$M)</SectionLabel>
+          </AnimateIn>
+          <div style={{ borderRadius: 6, padding: "0.35rem", flex: 1, minHeight: 0 }}><RevenueGPChart /></div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <AnimateIn delay={0.45}><SectionLabel>Investment Highlights</SectionLabel></AnimateIn>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {highlights.map((item, i) => (
